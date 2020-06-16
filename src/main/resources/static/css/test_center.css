@@ -1,0 +1,36 @@
+.big{
+    background-color: #2D93CA;
+    width: 400px;
+    height: 400px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.small{
+    background-color: purple;
+    width: 100px;
+    height: 100px;
+
+}
+
+.big_box{
+    background-color: #c1ca43;
+    height: 200px;
+    width: 400px;
+}
+
+.box{
+    background-color: #2D93CA;
+    height: 100px;
+    width: 200px;
+}
+
+.txt{
+    background-color: purple;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <title>登陆</title>
+
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+    <link th:href="@{/static/layui/css/layui.css}" rel="stylesheet" media="all">
+    <link th:href="@{/static/css/common.css}" rel="stylesheet">
+    <link th:href="@{/static/css/login.css}" rel="stylesheet">
+
+
+
+
+
+</head>
+<body class="layui-layout-body" >
+<!--······················导航栏···························-->
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
+            <li class="layui-nav-item"><a th:href="@{/store/toStreet}">美食街</a></li>
+            <li class="layui-nav-item">
+                <a th:href="@{/customer/toOrderingCheck}">我的订单</a>
+                <dl class="layui-nav-child">
+                    <dd><a th:href="@{/ordering/toOrderingCheck}">查看订单</a></dd>
+                </dl>
+            </li>
+        </ul>
+
+
+
+        <!--未登陆-->
+        <span th:if="${session.loginBean==null}">
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <dd><a th:href="@{/customer/toLogin}">登陆/注册</a></dd>
+                </li>
+            </ul>
+        </span>
+
+
+        <!--登陆成功-->
+        <span th:if="${session.loginBean!=null}">
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}" class="layui-nav-img">
+                        <span th:text="${session.loginBean.name}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/customer/toCustomerInfo}">个人信息</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a th:href="@{/customer/logout}">注销</a></li>
+            </ul>
+        </span>
+
+    </div>
+</div>
+<!--······················导航栏结束···························-->
+
+<div class="layui-container">
+    <div class="layui-row">
+        <div class="layui-col-md-offset4 layui-col-md4">
+
+            <form class="layui-form" th:action="@{/customer/loginByPhone}" method="post">
+                <h1 class="layui-input-block">欢迎登陆</h1>
+                <div class="layui-form-item">
+                    <input type="text" class="layui-input" name="phone" placeholder="请输入账号绑定的手机号">
+
+                </div>
+                <div class="layui-form-item">
+                    <input type="password" class="layui-input" name="password" placeholder="请输入密码">
+
+                </div>
+
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">登录</button>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <div class="layui-btn-group">
+                            <a th:href="@{/customer/toRegister}" class="layui-btn layui-btn-primary">注册</a>
+                            <button type="reset" class="layui-btn layui-btn-warm">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+<script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
+<script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
+
+
+<script>
+
+
+    layui.use('element', function(){
+        var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+        //监听导航点击
+        element.on('nav(demo)', function(elem){
+            //console.log(elem)
+            layer.msg(elem.text());
+        });
+    });
+</script>
+</body>
+</html>

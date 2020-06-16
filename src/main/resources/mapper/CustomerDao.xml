@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.lingnan.eattingwhat2.dao.CustomerDao">
+
+    <resultMap type="edu.lingnan.eattingwhat2.entity.Customer" id="CustomerMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="regDate" column="reg_date" jdbcType="TIMESTAMP"/>
+        <result property="lastLoginDate" column="last_login_date" jdbcType="TIMESTAMP"/>
+        <result property="ssuper" column="ssuper" jdbcType="INTEGER"/>
+        <result property="redpaper" column="redpaper" jdbcType="INTEGER"/>
+        <result property="regMember" column="reg_member" jdbcType="TIMESTAMP"/>
+        <result property="pastMember" column="past_member" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="CustomerMap">
+        select
+          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
+        from eattingwhat2.customer
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="CustomerMap">
+        select
+          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
+        from eattingwhat2.customer
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="CustomerMap">
+        select
+          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
+        from eattingwhat2.customer
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="image != null and image != ''">
+                and image = #{image}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="regDate != null">
+                and reg_date = #{regDate}
+            </if>
+            <if test="lastLoginDate != null">
+                and last_login_date = #{lastLoginDate}
+            </if>
+            <if test="ssuper != null">
+                and ssuper = #{ssuper}
+            </if>
+            <if test="redpaper != null">
+                and redpaper = #{redpaper}
+            </if>
+            <if test="regMember != null">
+                and reg_member = #{regMember}
+            </if>
+            <if test="pastMember != null">
+                and past_member = #{pastMember}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into eattingwhat2.customer(image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member)
+        values (#{image}, #{name}, #{password}, #{phone}, #{address}, #{regDate}, #{lastLoginDate}, #{ssuper}, #{redpaper}, #{regMember}, #{pastMember})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update eattingwhat2.customer
+        <set>
+            <if test="image != null and image != ''">
+                image = #{image},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="regDate != null">
+                reg_date = #{regDate},
+            </if>
+            <if test="lastLoginDate != null">
+                last_login_date = #{lastLoginDate},
+            </if>
+            <if test="ssuper != null">
+                ssuper = #{ssuper},
+            </if>
+            <if test="redpaper != null">
+                redpaper = #{redpaper},
+            </if>
+            <if test="regMember != null">
+                reg_member = #{regMember},
+            </if>
+            <if test="pastMember != null">
+                past_member = #{pastMember},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from eattingwhat2.customer where id = #{id}
+    </delete>
+
+
+    <!--手机号登录-->
+    <select id="loginByPhone" resultMap="CustomerMap">
+        select * from eattingwhat2.customer where phone = #{phone} and password = #{password};
+    </select>
+
+</mapper>
