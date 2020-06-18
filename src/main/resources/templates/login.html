@@ -74,17 +74,17 @@
             <form class="layui-form" th:action="@{/customer/loginByPhone}" method="post">
                 <h1 class="layui-input-block">欢迎登陆</h1>
                 <div class="layui-form-item">
-                    <input type="text" class="layui-input" name="phone" placeholder="请输入账号绑定的手机号">
+                    <input type="text" class="layui-input" name="phone"  ID="account" placeholder="请输入账号绑定的手机号">
 
                 </div>
                 <div class="layui-form-item">
-                    <input type="password" class="layui-input" name="password" placeholder="请输入密码">
+                    <input type="password" class="layui-input" name="password" ID="password" placeholder="请输入密码">
 
                 </div>
 
 
                 <div class="layui-form-item">
-                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">登录</button>
+                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo" onclick="SetPwbAndChk()">登录</button>
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -94,6 +94,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="layui-form-item" >
+                    <div class="layui-input-block">
+                        <input type="checkbox" ID="chkRememberPwd" checked="checked">记住密码
+
+                    </div>
+                </div>
+
 
 
             </form>
@@ -107,6 +114,70 @@
 <script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
 <script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
 
+<script type="text/javascript">
+    window.onload=function onLoginLoaded () {
+        if(checkCooike()){
+            //获取Cookie
+            var info = getCookie();
+            var ca = info.split(",");
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                if (c.substring(0, 8) === "account=") {//截取字符串account=
+                    //alert(c.substring(8));
+                    document.getElementById("account").value = c.substring(8);
+                } else if (c.substring(0, 9) === "password=") {//截取字符串password=
+                    //alert(c.substring(9));
+                    document.getElementById("password").value = c.substring(9);
+                }
+            }
+        }
+    };
+    function Stuts() {
+        if(document.getElementById('chkRememberPwd').checked === true){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+    function SetPwbAndChk() {
+        //判断记住密码是否被勾选
+        // var checkstatus = document.getElementById('chkRememberPwb');
+        if(Stuts() === true){
+            //获取用户名
+            var usr = document.getElementById('account').value;
+            //获取密码
+            var pwb = document.getElementById("password").value;
+            //alert(pwb+"密码");     //测试密码
+            var expdate = new Date();
+            //设置Cookie过期时间为两周
+            expdate.setTime(expdate.getTime() + 14 * (24*60*60*1000));
+            var time =expdate.toUTCString();
+            //写进Cookie
+            document.cookie = "account="+usr+","+"password"+"="+pwb+","+"expdate="+ time+";path=/";
+        }else{
+            var expdate = new Date();
+            expdate.setTime(0);
+            var time =expdate.toUTCString();
+            document.cookie = "account="+",password=,"+"expdate="+ time+";path=/";
+        }
+    }
+    //根据account取Cookie值
+    function getCookie() {
+        //读取Cookie
+        var decodedCookie = decodeURIComponent(document.cookie);
+        return decodedCookie;
+    }
+    //判断Cookie是否为空
+    function checkCooike() {
+        var info = getCookie();
+        if(info != ""){
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>
 
 <script>
 
@@ -126,10 +197,10 @@
     });
 </script>
 
+
+
 <script>
-
-
-
+    //弹窗提示后端传过来的msg
     var msg="[[${msg}]]";
 
     //Demo

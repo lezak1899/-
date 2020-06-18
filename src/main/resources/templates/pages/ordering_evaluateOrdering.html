@@ -135,6 +135,7 @@
 
 
 
+    //提交到后台的json数据
     var dataSubmit={
         "score":5,//评分默认5颗星
         "evaluation":"",//文字评价
@@ -145,36 +146,19 @@
         "image2":"",
         "image3":"",
         "image4":""
-
     }
 
     $(function () {
-        $(".submit").click(function () {
-            $.ajax({
 
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-
-                    url:'/evaluation//submitEvaluation2',
-                    type: "POST",
-
-                    data:JSON.stringify(dataSubmit),
-                    success:function(data){
-                        //alert(data);
-                        $(location).attr('href', '/evaluation/toEvaluationCheck');
-                    }
-                }
-            )
-        });
 
     })
 
     var cout=1;
-    layui.use(['rate','form','upload'], function(){
+    layui.use(['rate','form','upload','layer'], function(){
         var rate = layui.rate;
         var form = layui.form;
         var upload = layui.upload;
+        var layer=layui.layer;
 
         //layui，多图片上传
         var uploadInst = upload.render({
@@ -203,26 +187,9 @@
             }
             ,allDone: function(obj){ //当文件全部被提交后，才触发
 
-
-                //获得form表单里面的值
-                var formValue = form.val("formValue");
-                var orderingId =[[${ordering.id}]];
-                var storeId=[[${store.id}]];
-
-                //data是我们最终提交提交到后台的一个JSON对象， 将原本form表单里面的值赋值到data对应的属性
-                dataSubmit["evaluation"]= formValue["evaluationTxt"];
-                dataSubmit["anonymity"]= formValue["anonymity"];
-                dataSubmit["orderingId"]=orderingId;
-                dataSubmit["storeId"]=storeId;
-
-                var myJSON = JSON.stringify(dataSubmit);
-                console.log(myJSON);
-
-
             }
             ,error: function(){
                 alert("回调失败");
-
             }
         });
 
@@ -236,11 +203,58 @@
             }
 
         });
+        //提交表单数据
+        $(".submit").click(function () {
+
+            //获得form表单里面的值
+            var formValue = form.val("formValue");
+            var orderingId =[[${ordering.id}]];
+            var storeId=[[${store.id}]];
+
+            //data是我们最终提交提交到后台的一个JSON对象， 将原本form表单里面的值赋值到data对应的属性
+            dataSubmit["evaluation"]= formValue["evaluationTxt"];
+            dataSubmit["anonymity"]= formValue["anonymity"];
+            dataSubmit["orderingId"]=orderingId;
+            dataSubmit["storeId"]=storeId;
+
+
+            $.ajax({
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    url:'/evaluation//submitEvaluation2',
+                    type: "POST",
+
+                    data:JSON.stringify(dataSubmit),
+                    success:function(data){
+
+
+                        if(data=="success"){$(location).attr('href', '/evaluation/toEvaluationCheck');}
+                        if(data=="failure"){
+                            layer.open({
+                                type: 1
+                                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                                ,id: 'alertMsg' //防止重复弹出
+                                ,content: '<div style="padding: 20px 100px;">'+ data +'</div>'
+                                ,btn: '关闭'
+                                ,btnAlign: 'c' //按钮居中
+                                ,shade: 0 //不显示遮罩
+                                ,yes: function(){
+                                    layer.closeAll();
+                                }
+                            });
+                        }
+                    }
+                }
+            )
+        });
 
     });
 </script>
 
-</body>
+
+
 
 
 </body>

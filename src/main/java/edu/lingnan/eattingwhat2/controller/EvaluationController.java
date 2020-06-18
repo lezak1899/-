@@ -109,6 +109,10 @@ public class EvaluationController {
     @RequestMapping("/submitEvaluation2")
     public String submitEvaluation2(@RequestBody Evaluation evaluation, HttpSession session) {
 
+        if(evaluation.getEvaluation().length()<5){
+            return "评价不能小于5个字哦！";
+        }
+
 
 
         Customer loginBean=(Customer) session.getAttribute("loginBean");
@@ -126,7 +130,7 @@ public class EvaluationController {
         ordering.setOrderingState(3);
         orderingService.update(ordering);
         evaluationService.insert(evaluation);
-        return "ok";
+        return "success";
 
     }
 
