@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+
+<head>
+    <title>评价订单</title>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link th:href="@{/static/layui/css/layui.css}" rel="stylesheet" media="all">
+    <link th:href="@{/static/css/common.css}" rel="stylesheet">
+    <link th:href="@{/static/css/login.css}" rel="stylesheet">
+    <script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
+
+</head>
+<body>
+
+<!--······················导航栏···························-->
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo" style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
+            <li class="layui-nav-item"><a th:href="@{/store/toStreet}">美食街</a></li>
+            <li class="layui-nav-item">
+                <a th:href="@{/customer/toOrderingCheck}">我的订单</a>
+                <dl class="layui-nav-child">
+                    <dd><a th:href="@{/ordering/toOrderingCheck}">查看订单</a></dd>
+                </dl>
+            </li>
+        </ul>
+
+
+
+        <!--未登陆-->
+        <span th:if="${session.loginBean==null}">
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <dd><a th:href="@{/customer/toLogin}">登陆/注册</a></dd>
+                </li>
+            </ul>
+        </span>
+
+
+        <!--登陆成功-->
+        <span th:if="${session.loginBean!=null}">
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}" class="layui-nav-img">
+                        <span th:text="${session.loginBean.name}"></span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a th:href="@{/customer/toCustomerInfo}">个人信息</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a th:href="@{/customer/logout}">注销</a></li>
+            </ul>
+        </span>
+
+    </div>
+</div>
+
+<div  style="width: 75%;margin:0px auto;" >
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
+        <legend>订单评价</legend>
+    </fieldset>
+
+    <div style="width: 960px;min-height:600px;margin:0px auto;background-color:#f7f7f7;margin-top: 30px;">
+        <div style="width: 800px;margin:auto" class="layui-form" >
+
+            <!--隔开-->
+            <div style="width: 100%;height: 30px;"></div>
+
+            <P style="text-align: center;width: 100%;font-size: 20px;font-weight: 600;line-height: 60px;">这次用餐体验还满意吗？</P>
+
+
+            <div style="display:flex;justify-content: center;height: 60px;position: relative;left: 20px;">
+                <div class="mark" style="font-size: 70px;letter-spacing: 0.6em;line-height: 20px;"></div>
+            </div>
+
+
+            <!--lay-filter="formValue"   是为了获得form表单里面input的值才设置的，在图片上传的回调函数里面有用到-->
+            <form class="layui-form formTest"  lay-filter="formValue" >
+
+
+                <div class="layui-form-item layui-form-text">
+
+                    <label class="layui-form-label">评价</label>
+                    <div class="layui-input-block">
+                        <textarea name="evaluationTxt" placeholder="请输入内容" class="layui-textarea" ></textarea>
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">匿名</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="anonymity" value=1 title="是">
+                        <input type="radio" name="anonymity" value=0 title="否" checked>
+                    </div>
+                </div>
+
+                <div class="layui-upload layui-form-item">
+
+                    <blockquote class="layui-elem-quote layui-quote-nm layui-input-block upload" >
+                        点击上传图片（最多上传4张图片）
+                        <div class="layui-upload-list preview" ></div>
+                    </blockquote>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn submit" lay-submit lay-filter="formDemo" onclick="return false;">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+<script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
+<script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
+
+<script>
+
+
+
+    var dataSubmit={
+        "score":5,//评分默认5颗星
+        "evaluation":"",//文字评价
+        "anonymity":0,//是否匿名,1匿名，0不匿名
+        "orderingId":"",
+        "storeId":"",
+        "image1":"",//图片一的名字，一共可以上传4张图
+        "image2":"",
+        "image3":"",
+        "image4":""
+
+    }
+
+    $(function () {
+        $(".submit").click(function () {
+            $.ajax({
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    url:'/evaluation//submitEvaluation2',
+                    type: "POST",
+
+                    data:JSON.stringify(dataSubmit),
+                    success:function(data){
+                        //alert(data);
+                        $(location).attr('href', '/evaluation/toEvaluationCheck');
+                    }
+                }
+            )
+        });
+
+    })
+
+    var cout=1;
+    layui.use(['rate','form','upload'], function(){
+        var rate = layui.rate;
+        var form = layui.form;
+        var upload = layui.upload;
+
+        //layui，多图片上传
+        var uploadInst = upload.render({
+            elem: '.upload' //绑定元素
+            ,url: '/evaluation/submitEvaluation1' //上传接口
+            ,multiple: true
+            ,acceptMime: 'image/*'
+            //,auto:false //是否自动提交，默认true
+            ,number:4
+            //,bindAction:'.submit'
+            ,choose:function(obj){
+
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+
+                    $('.preview').append('<img src="'+ result +'" alt="'+ file.name +'" style="width: 80px;height: 80px;margin: 5px">')
+
+                });
+            }
+            ,done: function(data){
+
+                dataSubmit["image"+cout]=data["image"];
+                cout++;
+                //alert(data["image"]);
+
+            }
+            ,allDone: function(obj){ //当文件全部被提交后，才触发
+
+
+                //获得form表单里面的值
+                var formValue = form.val("formValue");
+                var orderingId =[[${ordering.id}]];
+                var storeId=[[${store.id}]];
+
+                //data是我们最终提交提交到后台的一个JSON对象， 将原本form表单里面的值赋值到data对应的属性
+                dataSubmit["evaluation"]= formValue["evaluationTxt"];
+                dataSubmit["anonymity"]= formValue["anonymity"];
+                dataSubmit["orderingId"]=orderingId;
+                dataSubmit["storeId"]=storeId;
+
+                var myJSON = JSON.stringify(dataSubmit);
+                console.log(myJSON);
+
+
+            }
+            ,error: function(){
+                alert("回调失败");
+
+            }
+        });
+
+        //渲染评分组件
+        var ins1 = rate.render({
+            elem: '.mark'  //绑定元素
+            ,value: 0//初始值
+
+            ,choose: function(value){
+                dataSubmit["score"]=value;
+            }
+
+        });
+
+    });
+</script>
+
+</body>
+
+
+</body>
+</html>

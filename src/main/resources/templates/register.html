@@ -12,7 +12,7 @@
     <link th:href="@{/static/layui/css/layui.css}" rel="stylesheet" media="all">
     <link th:href="@{/static/css/common.css}" rel="stylesheet">
     <link th:href="@{/static/css/login.css}" rel="stylesheet">
-    <script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
+
 
 </head>
 <body>
@@ -151,11 +151,40 @@
 
 
 
-<!--UI的最终呈现得益于 Form模块 的全自动渲染，她将原本普通的诸如select、checkbox、radio等元素重置为你所看到的模样。-->
+<!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
+<script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
+<script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
+
+
 <script>
+
+    var msg="[[${msg}]]";
+
+
     //Demo
-    layui.use('form', function(){
+    layui.use(['form','layer'], function(){
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        if(msg!=""){
+
+            layer.open({
+                type: 1
+                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,id: 'alertMsg' //防止重复弹出
+                ,content: '<div style="padding: 20px 100px;">'+ msg +'</div>'
+                ,btn: '关闭'
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0 //不显示遮罩
+                ,yes: function(){
+                    layer.closeAll();
+                }
+            });
+        }
     });
+
+
+
+
 
 
 </script>

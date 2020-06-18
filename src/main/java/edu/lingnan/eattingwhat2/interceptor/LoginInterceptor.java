@@ -1,6 +1,7 @@
 package edu.lingnan.eattingwhat2.interceptor;
 
 import edu.lingnan.eattingwhat2.entity.Customer;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,8 +24,11 @@ public class LoginInterceptor implements HandlerInterceptor {
             return true;
         }
         //不符合条件的给出提示信息，并转发到登录页面
-        request.setAttribute("msg", "您还没有登录，请先登录！");
+        request.setAttribute("msg", "访问受限,请先登录！");
+
+
         request.getRequestDispatcher("/customer/toLogin").forward(request, response);
+        request.setAttribute("msg","你访问的页面需要先登陆才可以查看，请先登陆！");
         return false;
     }
 

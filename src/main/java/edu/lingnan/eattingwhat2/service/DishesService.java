@@ -55,4 +55,6 @@ public interface DishesService {
 
     List<Dishes> queryAllByStoreId(int storeId);
 
+    List<Dishes> queryAllByOrderingId(int orderingId);
+
 }

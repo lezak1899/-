@@ -76,4 +76,20 @@ public class EvaluationServiceImpl implements EvaluationService {
     public boolean deleteById(Integer id) {
         return this.evaluationDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<Evaluation> queryAllByCustomerId(int customerId) {
+        Evaluation evaluation=new Evaluation();
+        evaluation.setCustomerId(customerId);
+        List<Evaluation> evaluationList =evaluationDao.queryAll(evaluation);
+        return evaluationList;
+    }
+
+    @Override
+    public List<Evaluation> queryAllByStoreId(int storeId) {
+        Evaluation evaluation=new Evaluation();
+        evaluation.setStoreId(storeId);
+        List<Evaluation> evaluationList =evaluationDao.queryAll(evaluation);
+        return evaluationList;
+    }
 }

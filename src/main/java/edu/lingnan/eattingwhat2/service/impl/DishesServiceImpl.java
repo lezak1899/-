@@ -85,4 +85,11 @@ public class DishesServiceImpl implements DishesService {
 
         return dishesDao.queryAll(dishes);
     }
+
+    @Override
+    public List<Dishes> queryAllByOrderingId(int orderingId) {
+        Dishes dishes =new Dishes();
+        dishes.setStoreId(orderingId);
+        return dishesDao.queryAll(dishes);
+    }
 }

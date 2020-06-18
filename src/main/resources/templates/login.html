@@ -82,6 +82,7 @@
 
                 </div>
 
+
                 <div class="layui-form-item">
                     <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">登录</button>
                 </div>
@@ -93,6 +94,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </form>
         </div>
     </div>
@@ -108,7 +111,12 @@
 <script>
 
 
-    layui.use('element', function(){
+    layui.use(['form', 'layedit', 'laydate','element'], function(){
+        var form = layui.form
+            ,layer = layui.layer
+            ,layedit = layui.layedit
+            ,laydate = layui.laydate;
+
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
         //监听导航点击
         element.on('nav(demo)', function(elem){
@@ -116,6 +124,36 @@
             layer.msg(elem.text());
         });
     });
+</script>
+
+<script>
+
+
+
+    var msg="[[${msg}]]";
+
+    //Demo
+    layui.use(['form','layer'], function(){
+        var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+        if(msg!=""){
+
+            layer.open({
+                type: 1
+                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                ,id: 'alertMsg' //防止重复弹出
+                ,content: '<div style="padding: 20px 100px;">'+ msg +'</div>'
+                ,btn: '关闭'
+                ,btnAlign: 'c' //按钮居中
+                ,shade: 0 //不显示遮罩
+                ,yes: function(){
+                    layer.closeAll();
+                }
+            });
+        }
+    });
+
+
 </script>
 </body>
 </html>

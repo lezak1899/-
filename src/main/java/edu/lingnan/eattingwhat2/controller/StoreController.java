@@ -1,8 +1,10 @@
 package edu.lingnan.eattingwhat2.controller;
 
 import edu.lingnan.eattingwhat2.entity.Dishes;
+import edu.lingnan.eattingwhat2.entity.Evaluation;
 import edu.lingnan.eattingwhat2.entity.Store;
 import edu.lingnan.eattingwhat2.service.DishesService;
+import edu.lingnan.eattingwhat2.service.EvaluationService;
 import edu.lingnan.eattingwhat2.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,16 +31,10 @@ public class StoreController {
     @Resource
     private DishesService dishesService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Store selectOne(Integer id) {
-        return this.storeService.queryById(id);
-    }
+    @Resource
+    private EvaluationService evaluationService;
+
+
 
 
     @GetMapping("toStreet")
@@ -57,6 +53,11 @@ public class StoreController {
         //菜单列别
         List<Dishes> dishes=dishesService.queryAllByStoreId(storeId);
         model.addAttribute("dishes", dishes);
+        //评价列表evaluationList
+
+        List<Evaluation> evaluationList =evaluationService.queryAllByStoreId(storeId);
+        model.addAttribute("evaluationList",evaluationList);
+
 
         //System.out.println(this.getClass().getName()+"::::123");
         return "store_detail";

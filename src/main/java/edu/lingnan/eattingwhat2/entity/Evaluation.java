@@ -9,11 +9,11 @@ import java.io.Serializable;
  * (Evaluation)实体类
  *
  * @author makejava
- * @since 2020-06-14 11:02:46
+ * @since 2020-06-18 11:29:27
  */
 @Component
 public class Evaluation implements Serializable {
-    private static final long serialVersionUID = 222158355524120827L;
+    private static final long serialVersionUID = 847168913093645055L;
     
     private Integer id;
     
@@ -21,9 +21,9 @@ public class Evaluation implements Serializable {
     
     private Integer customerId;
     
-    private Integer customerImage;
+    private String customerImage;
     
-    private Integer customerName;
+    private String customerName;
     
     private Integer orderingId;
     
@@ -68,19 +68,19 @@ public class Evaluation implements Serializable {
         this.customerId = customerId;
     }
 
-    public Integer getCustomerImage() {
+    public String getCustomerImage() {
         return customerImage;
     }
 
-    public void setCustomerImage(Integer customerImage) {
+    public void setCustomerImage(String customerImage) {
         this.customerImage = customerImage;
     }
 
-    public Integer getCustomerName() {
+    public String getCustomerName() {
         return customerName;
     }
 
-    public void setCustomerName(Integer customerName) {
+    public void setCustomerName(String customerName) {
         this.customerName = customerName;
     }
 

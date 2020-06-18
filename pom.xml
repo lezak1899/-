@@ -63,7 +63,7 @@
         </dependency>
 
 
-        <!--=============================额外导的包===================================-->
+        <!--=============================  自己的包===================================-->
 
         <!--thymeleaf-->
         <dependency>
@@ -71,6 +71,14 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
             <version>2.2.0.RELEASE</version>
         </dependency>
+
+        <!-- 阿里巴巴给我们封装好的json包，JSON.toJSONString(u) -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.58</version>
+        </dependency>
+
 
 
 

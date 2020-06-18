@@ -1,5 +1,6 @@
 package edu.lingnan.eattingwhat2.service;
 
+import edu.lingnan.eattingwhat2.entity.Dishes;
 import edu.lingnan.eattingwhat2.entity.Evaluation;
 import java.util.List;
 
@@ -51,5 +52,14 @@ public interface EvaluationService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
+    List<Evaluation> queryAllByCustomerId(int customerId);
+
+    List<Evaluation> queryAllByStoreId(int storeId);
+
+
+
+
+
 
 }

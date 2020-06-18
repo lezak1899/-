@@ -87,7 +87,7 @@
                         <h1 style="color:#ffbc0d;line-height: 120px;margin-left: 20px; ">外卖小哥正在配送中，请稍后。。。</h1>
                     </div>
 
-                    <!--······················111111111111111111···························-->
+
                     <span th:each="ordering: ${orderingWithDishesList}">
                         <span th:if=" ${ordering.orderingState} eq 1 ">
                         <!--<c:if test="${ordering.orderingState == 1 }">-->
@@ -151,7 +151,7 @@
                         </span>
 
                     </span>
-                    <!--······················111111111111111111···························-->
+
                 </div>
 
                 <!--······················已送达···························-->
@@ -211,7 +211,7 @@
                                     </td>
                                     <td style="text-align: center">
 
-                                        <button class="layui-btn layui-btn-sm layui-btn evaluate">去评价</button>
+                                        <button class="layui-btn layui-btn-sm layui-btn evaluate" th:value="${ordering.id}">去评价</button>
 
 
                                     </td>
@@ -279,7 +279,7 @@
                                 </td>
                                 <td style="text-align: center">
                                     <span th:if=" ${ordering.orderingState} eq 1 "><button class="layui-btn layui-btn-sm layui-btn deliveryConfirmineBtn" th:value="${ordering.id}">确认送达</button></span>
-                                    <span th:if=" ${ordering.orderingState} eq 2 "><button class="layui-btn layui-btn-sm layui-btn">去评价</button></span>
+                                    <span th:if=" ${ordering.orderingState} eq 2 "><button class="layui-btn layui-btn-sm layui-btn evaluate" th:value="${ordering.id}">去评价</button></span>
 
 
 
@@ -343,13 +343,17 @@
 
         $(function(){
             $(".evaluate").click(function () {
-                $(location).attr('href', '${ctx}/evaluation/evaluate');
+                var orderingId = $(this).attr('value');
+
+
+                $(location).attr('href', '/evaluation/toEvaluateOrdering?orderingId=' + orderingId);
             });
 
             $(".deliveryConfirmineBtn").click(function () {
                 var orderingId = $(this).attr('value');
 
-                $(location).attr('href', '/ordering/deliveryConfirmine?orderingId=' + orderingId);});
+                $(location).attr('href', '/ordering/deliveryConfirmine?orderingId=' + orderingId);
+            });
 
         });
 
