@@ -14,6 +14,7 @@
 
 </head>
 <body>
+
 <!--······················导航栏···························-->
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
@@ -23,9 +24,10 @@
             <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
             <li class="layui-nav-item"><a th:href="@{/store/toStreet}">美食街</a></li>
             <li class="layui-nav-item">
-                <a th:href="@{/customer/toOrderingCheck}">我的订单</a>
+                <a th:href="@{/ordering/toOrderingCheck}">我的订单</a>
                 <dl class="layui-nav-child">
                     <dd><a th:href="@{/ordering/toOrderingCheck}">查看订单</a></dd>
+                    <dd><a th:href="@{/evaluation/toEvaluationCheck}">我的评价</a></dd>
                 </dl>
             </li>
         </ul>
@@ -164,11 +166,11 @@
                                             <td>
                                                 <table width="100%" height="100%">
                                                     <tr height="50%">
-                                                        <td width="70%">
+                                                        <td width="80%">
                                                             <span th:if=" ${item.anonymity} eq 1 ">匿名用户</span>
                                                             <span th:if=" ${item.anonymity} eq 0 ">[[${item.customerName}]]</span>
                                                         </td>
-                                                        <td width="30%">
+                                                        <td width="20%">
                                                             <div style="color: #6c6c6c;font-size: 12px">
                                                                 <span th:text="${#dates.format(item.date, 'yyyy-MM-dd HH:mm:ss')}"/>
                                                             </div>
@@ -177,7 +179,7 @@
                                                     <tr>
                                                         <td width="5%"></td>
                                                         <td colspan="2">
-                                                           <div style="color: #6c6c6c;font-size: 12px">
+                                                           <div style="font-size: 12px">
                                                                 评分:[[${item.score}]]
                                                            </div>
                                                         </td>
@@ -215,11 +217,11 @@
                                                         <td colspan="3" height="10px"></td>
                                                     </tr>
                                             </span>
+
                         </table>
-                         <br>
+                        <div style="width: 90%;text-align: center;color: #6c6c6c;margin: auto;height: 10px"><hr width=100% size=1 color=#00ffff align=center noshade></div>
                      </span>
-
-
+                    <div style="text-align: center;color: #6c6c6c;">以上是全部评价</div>
 
                 </div>
 

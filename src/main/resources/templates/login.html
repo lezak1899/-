@@ -19,6 +19,7 @@
 
 </head>
 <body class="layui-layout-body" >
+
 <!--······················导航栏···························-->
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
@@ -28,9 +29,10 @@
             <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
             <li class="layui-nav-item"><a th:href="@{/store/toStreet}">美食街</a></li>
             <li class="layui-nav-item">
-                <a th:href="@{/customer/toOrderingCheck}">我的订单</a>
+                <a th:href="@{/ordering/toOrderingCheck}">我的订单</a>
                 <dl class="layui-nav-child">
                     <dd><a th:href="@{/ordering/toOrderingCheck}">查看订单</a></dd>
+                    <dd><a th:href="@{/evaluation/toEvaluationCheck}">我的评价</a></dd>
                 </dl>
             </li>
         </ul>
@@ -87,19 +89,15 @@
                     <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo" onclick="SetPwbAndChk()">登录</button>
                 </div>
                 <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <div class="layui-btn-group">
-                            <a th:href="@{/customer/toRegister}" class="layui-btn layui-btn-primary">注册</a>
-                            <button type="reset" class="layui-btn layui-btn-warm">重置</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="layui-form-item" >
-                    <div class="layui-input-block">
-                        <input type="checkbox" ID="chkRememberPwd" checked="checked">记住密码
+                    <input type="checkbox" ID="chkRememberPwd" lay-skin="primary" title="记住密码" checked="true" style="float: left">
 
-                    </div>
+                        <div class="layui-btn-group" style="float: right">
+                            <a th:href="@{/customer/toRegister}" class="layui-btn layui-btn-primary"  >注册</a>
+                            <button type="reset" class="layui-btn layui-btn-warm" >重置</button>
+                        </div>
+
                 </div>
+
 
 
 
