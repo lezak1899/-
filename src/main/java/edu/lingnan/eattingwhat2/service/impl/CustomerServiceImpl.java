@@ -97,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getByPhone(String customerPhone) {
         Customer customer = new Customer();
-        customer.setName(customerPhone);
+        customer.setPhone(customerPhone);
         List<Customer> list=customerDao.queryAll(customer);
         if(list.size()==0)
             return null;
