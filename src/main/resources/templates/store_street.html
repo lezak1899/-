@@ -32,6 +32,18 @@
             </li>
         </ul>
 
+        <!--搜索框-->
+        <ul class="user-defined-layui-layout-middle" >
+            <li class="layui-nav-item">
+                <!--  οnsubmit="return false 阻止原生的form表单按回车提交   -->
+                <!--   <form action="${path}/findByName" method="post" οnsubmit="return false"></form>-->
+                <input id="search" type="text" name="storeNameLike" placeholder="根据商店名查询" style="border:1px solid #E6E6E6;;height:28px;width:250px;">
+                <button id="search_submint" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i> 搜索</button>
+                <div id="suggest"></div>
+
+            </li>
+        </ul>
+
 
 
         <!--未登陆-->
@@ -78,11 +90,6 @@
                     <td style="width: 385px;height: 280px;background-color:#FFD700;"><img height="100%" width="100%" th:src="@{/static/images/麦当劳1.jpg}"></td>
                     <td style="width: 385px;height: 280px;background-color:#FFD700;"><img  width="100%" th:src="@{/static/images/探鱼1.jpg}"></td>
                 </tr>
-
-
-
-
-
                     <tr  th:each="item: ${allStore}">
                         <td colspan="2" style="height: 100px;">
 
@@ -134,7 +141,7 @@
         });
 
         $("#search_submint").click(function () {
-            $(location).attr('href', '${ctx}/store/search?storeNameLike='+$("#search").val());
+            $(location).attr('href', '/store/search?storeNameLike='+$("#search").val());
         });
 
     });
@@ -167,6 +174,156 @@
         });
         //演示动画结束
     })
+</script>
+
+<script>
+    //Google suggest
+    //全局变量，高亮的信息-1表示没有选中
+    var highlightindex = -1;
+    //延时处理
+    var timeout;
+    $(document).ready(function(){
+        //获得JQUERY封装的一个对象,将搜索框封装
+        var wordInput = $("#search");
+        var wordInputOffset = wordInput.offset();
+        //设置DIV为隐藏，并设置边框属性
+        $("#suggest").hide().css("border","1px black solid")
+            //.css("position","absolute")
+            //input离上面的长度+input的高（宽）
+            .css("top",wordInputOffset.top+wordInput.height()+5+"px")
+            //input高左面的的长度
+            .css("left",wordInputOffset.left+"px")
+            .css("background-color","white")
+            //input的宽度
+            .width(wordInput.width()+"px");
+
+        //如果失去搜索框失去焦点，就把提示隐藏起来，延时1秒是为了有时间执行 $("#search").val(textClick); 这句代码
+
+        $("#search").blur(function () {
+            setTimeout(function(){
+                $("#suggest").hide();
+            },300);
+
+        });
+
+
+
+        $("#search").keyup(function(event){
+            //Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
+            //事件通常与函数结合使用，函数不会在事件发生前被执行！
+            //如果存在event,那么var e=event;而如果不存在event，那么var e=window.event; 其中火狐为event，谷歌和ie是window.event
+            var myEvent = event || window.event;
+            var myKeyCode = myEvent.keyCode;
+            var suggest = $("#suggest");
+
+
+            if(myKeyCode>=65 && myKeyCode<=90 || myKeyCode>=48 && myKeyCode<=57 || myKeyCode>=96 && myKeyCode<=105 || myKeyCode==8 || myKeyCode==46){
+                //去除空格
+                var wordText = $.trim($("#search").val());
+                if(wordText!=""){
+                        wordText = $.trim($("#search").val());
+                        $.ajax({
+                            url:"/store/suggestByStr",
+                            type:"get",
+                            data:{
+                                str:wordText
+                            },
+                            success:function(data){
+                                suggest.html(""); //重置div
+                                var wordNodes = data;
+                                //循环输出wordNodes
+                                for(var i in wordNodes){
+                                    var newDiv = $("<div>").attr("id",i);
+                                    newDiv.css("line-height","30px");
+                                    newDiv.html(wordNodes[i].name).appendTo(suggest);
+                                    newDiv.mouseover(function(){
+                                        //将原来的蓝色字段设为白色
+                                        if(highlightindex!=-1){
+                                            $("#suggest").children("div").eq(highlightindex).css("background-color","white");
+                                        }
+                                        highlightindex = $(this).attr("id");
+                                        $(this).css("background-color","#fdbd0f");
+                                    });
+                                    newDiv.mouseout(function(){
+                                        $(this).css("background-color","white");
+                                    });
+                                    newDiv.click(function(){
+                                        $("#suggest").hide();
+                                        var textClick = $("#suggest").children("div").eq(highlightindex).text();
+                                        highlightindex = -1;
+                                        $("#search").val(textClick);
+                                    });
+                                }
+                                //如果返回的wordNodes长度大于0就show
+                                if(wordNodes.length > 0){
+                                    suggest.show();
+                                }else{
+                                    suggest.hide();
+                                    highlightindex = -1;
+                                }
+
+                            },
+                            error:function(){
+                                alert("回调失败");
+                            }
+                        });
+                }else{//如果文本信息为空就隐藏
+                    suggest.hide();
+                    highlightindex = -1;
+                }
+                //键盘向上向下键
+            }else if(myKeyCode == 38 || myKeyCode ==40){
+                //向上
+                if(myKeyCode == 38){
+                    //获得ID为auto里面的所有DIV对象
+                    var autoNodes = $("#suggest").children("div");
+                    //如果没有被选中
+                    if(highlightindex != -1){
+                        //把原来的蓝色字段，设为白色
+                        autoNodes.eq(highlightindex).css("background-color","white");
+                        highlightindex--;
+                    }else{
+                        //如果是-1，则没有选中任何字段，此时按up键，选中最下面的字段
+                        highlightindex = autoNodes.length - 1;
+                    }
+                    autoNodes.eq(highlightindex).css("background-color","#fdbd0f");
+                }
+                //向下
+                if(myKeyCode == 40){
+                    //找到id为 "auto" 的包含的所有 div 子元素：
+                    var autoNodes = $("#suggest").children("div");
+                    if(highlightindex != -1){
+                        //把原来的蓝色字段，设为白色
+                        autoNodes.eq(highlightindex).css("background-color","white");
+                        highlightindex++;
+                    }else{
+                        highlightindex++;
+                    }
+                    if(highlightindex == autoNodes.length){
+                        //如果到了最后一个元素，重新回到第一个
+                        highlightindex = 0;
+                    }
+                    autoNodes.eq(highlightindex).css("background-color","#fdbd0f");
+                }
+
+                //回车键
+            }else if(myKeyCode ==13){
+                if(highlightindex!=-1){
+                    //获得选中的那个的文本值
+                    var textInputText = $("#suggest").children("div").eq(highlightindex).text();
+                    highlightindex = -1;
+                    $("#search").val(textInputText);
+                    $("#suggest").hide();
+
+                }else{
+                    $("#suggest").hide();
+                    //失去焦点
+                    $("#search").get(0).blur();
+                }
+            }
+        });
+
+    });
 </script>
 
 </body>

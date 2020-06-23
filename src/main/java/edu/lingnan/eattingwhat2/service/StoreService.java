@@ -60,6 +60,8 @@ public interface StoreService {
      */
     List<Store> queryAll(Store store);
 
+    List<Store> selectByNameLike(String storeNameStr);
+
 
 
 

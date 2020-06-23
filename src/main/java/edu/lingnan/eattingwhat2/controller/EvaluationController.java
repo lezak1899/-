@@ -53,7 +53,7 @@ public class EvaluationController {
         model.addAttribute("evaluationList",evaluationList);
 
 
-        return "/pages/evaluation_check";
+        return "pages/evaluation_check";
     }
 
 
@@ -70,7 +70,7 @@ public class EvaluationController {
         model.addAttribute("store",store);
 
 
-        return "/pages/ordering_evaluateOrdering";
+        return "pages/ordering_evaluateOrdering";
     }
 
     //提交订单分2个步骤，第一个步骤上传图片，并将图片的新名字回调
@@ -81,6 +81,7 @@ public class EvaluationController {
 
         //设置图片上传路径,是目标文件夹的路径
         String filePath = "E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";
+        //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
 
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();

@@ -66,7 +66,7 @@ public class CustomerController {
     @PostMapping("loginByPhone")
     public String loginByPhone(String phone,String password, Model model, HttpSession session,HttpServletRequest request) {
 
-        //System.out.println("进入"+this.getClass().getName()+"phone:"+phone+"password:"+password);
+        System.out.println("进入"+this.getClass().getName()+"phone:"+phone+"password:"+password);
 
 
         Customer loginBean = customerService.loginByPhone(phone, password);
@@ -186,7 +186,7 @@ public class CustomerController {
     @GetMapping("toCustomerInfo")
     public String toCustomerInfo(){
 
-        return "/pages/customer_info";
+        return "pages/customer_info";
     }
 
     @ResponseBody
@@ -197,9 +197,9 @@ public class CustomerController {
 
         //设置图片上传路径,是目标文件夹的路径
 
-        //String filePath="E:\\idea_workspace\\eattingwhat2\\src\\main\\resources\\static\\upload";  //本地运行项目的路径
-        String targetFilePath="E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";//target文件的路径
 
+        String filePath="E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";//target文件的路径
+        //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
 
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();
@@ -216,8 +216,7 @@ public class CustomerController {
 
 
         // 封装上传文件位置的全路径
-        //File srcFile = new File(filePath, newFileName);
-        File targetFile = new File(targetFilePath, newFileName);
+        File targetFile = new File(filePath, newFileName);
         file.transferTo(targetFile);
 
 

@@ -67,4 +67,6 @@ public interface StoreDao {
      */
     int deleteById(Integer id);
 
+    List<Store> selectByNameLike(String storeNameStr);
+
 }

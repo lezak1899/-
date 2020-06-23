@@ -196,7 +196,7 @@ public class OrderingController {
 
         model.addAttribute("orderingWithDishesList",orderingWithDishesList);
 
-        return "/pages/ordering_check";
+        return "pages/ordering_check";
     }
 
     @GetMapping("deliveryConfirmine")

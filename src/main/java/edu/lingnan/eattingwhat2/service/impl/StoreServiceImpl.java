@@ -81,4 +81,9 @@ public class StoreServiceImpl implements StoreService {
     public List<Store> queryAll(Store store) {
         return storeDao.queryAll(store);
     }
+
+    @Override
+    public List<Store> selectByNameLike(String storeNameStr) {
+        return storeDao.selectByNameLike(storeNameStr);
+    }
 }

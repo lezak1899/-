@@ -156,4 +156,23 @@ public class Store implements Serializable {
         this.storefront = storefront;
     }
 
+    @Override
+    public String toString() {
+        return "Store{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                ", regDate=" + regDate +
+                ", lastLoginDate=" + lastLoginDate +
+                ", ssuper=" + ssuper +
+                ", monthlySales=" + monthlySales +
+                ", storeMark=" + storeMark +
+                ", storeState=" + storeState +
+                ", describle='" + describle + '\'' +
+                ", logo='" + logo + '\'' +
+                ", storefront='" + storefront + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package edu.lingnan.eattingwhat2.controller;
 
+
 import edu.lingnan.eattingwhat2.entity.Dishes;
 import edu.lingnan.eattingwhat2.entity.Evaluation;
 import edu.lingnan.eattingwhat2.entity.Store;
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -61,6 +63,28 @@ public class StoreController {
 
         //System.out.println(this.getClass().getName()+"::::123");
         return "store_detail";
+    }
+
+    @GetMapping("suggestByStr")
+    @ResponseBody
+    public List<Store> suggestByStr(String str) {
+
+
+        if(str=="") return  null;
+
+
+        List<Store> list = storeService.selectByNameLike(str);
+
+
+        return list;
+
+    }
+
+    @RequestMapping("/search")
+    public String search(String storeNameLike,Model model) {
+        List<Store> list = storeService.selectByNameLike(storeNameLike);
+        model.addAttribute("allStore", list);
+        return "store_street";
     }
 
 

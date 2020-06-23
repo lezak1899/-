@@ -144,4 +144,9 @@
         delete from eattingwhat2.store where id = #{id}
     </delete>
 
+     <!--通过关键字查询匹配的所有商店-->
+    <select id="selectByNameLike" resultMap="StoreMap">
+        select * from eattingwhat2.store where name like "%"#{storeNameStr}"%"
+    </select>
+
 </mapper>

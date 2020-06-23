@@ -21,15 +21,5 @@ public class OrderingDishesController {
     @Resource
     private OrderingDishesService orderingDishesService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public OrderingDishes selectOne(Integer id) {
-        return this.orderingDishesService.queryById(id);
-    }
 
 }
