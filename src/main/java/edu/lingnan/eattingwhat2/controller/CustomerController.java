@@ -4,6 +4,7 @@ import edu.lingnan.eattingwhat2.entity.Customer;
 import edu.lingnan.eattingwhat2.service.CustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,7 +67,7 @@ public class CustomerController {
     @PostMapping("loginByPhone")
     public String loginByPhone(String phone,String password, Model model, HttpSession session,HttpServletRequest request) {
 
-        System.out.println("进入"+this.getClass().getName()+"phone:"+phone+"password:"+password);
+        //System.out.println("进入"+this.getClass().getName()+"phone:"+phone+"password:"+password);
 
 
         Customer loginBean = customerService.loginByPhone(phone, password);
@@ -200,6 +201,7 @@ public class CustomerController {
 
         String filePath="E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";//target文件的路径
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
+        //String filePath="/usr/local/static/upload";
 
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();

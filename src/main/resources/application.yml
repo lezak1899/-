@@ -20,4 +20,6 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml #指定xml配置文件的位置
 
-
+file:
+  uploadFolder: /usr/local/upload
+  staticAccessPath: /static/upload/**

@@ -9,6 +9,7 @@ import edu.lingnan.eattingwhat2.service.OrderingService;
 import edu.lingnan.eattingwhat2.service.StoreService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -82,6 +83,8 @@ public class EvaluationController {
         //设置图片上传路径,是目标文件夹的路径
         String filePath = "E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
+        //String filePath="/usr/local/static/upload";
+
 
         // 获取原始图片的扩展名
         String originalFilename = file.getOriginalFilename();
