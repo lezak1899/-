@@ -125,7 +125,7 @@
 
 ###### 查看店家评价
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/170403_d41143e4_5388780.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/170643_7ff3a504_5388780.png "屏幕截图.png")
 
 ###### 带Googlesuggest功能的搜索框，目前只有火狐游览器支持该功能
 
