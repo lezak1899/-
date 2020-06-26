@@ -30,7 +30,7 @@
 
 ### 3、功能如下
 
-![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165111_1191342f_5388780.png "屏幕截图.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165305_80d02cce_5388780.png "屏幕截图.png")
 
 ##### 用户模块详情：
 
@@ -79,57 +79,54 @@
 ### 4、系统演示截图：
 
 ###### 欢迎页面
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165352_5bb3e280_5388780.png "屏幕截图.png")
 
-![image-20200621105844205](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621105844205.png)
 
 ###### 登陆页面
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165410_a76ae9b4_5388780.png "屏幕截图.png")
 
-![image-20200621105813197](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621105813197.png)
 
 ###### 美食街
 
-![image-20200621105915615](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621105915615.png)
 
-
-
-
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165718_aa622268_5388780.png "屏幕截图.png")
 
 ###### 访问受限，访问特定的页面需要先登陆
 
-![image-20200621105943130](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621105943130.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165737_f9857dab_5388780.png "屏幕截图.png")
+
 
 ###### 个人信息页面
 
-![image-20200621111605378](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621111605378.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165759_ccdd144e_5388780.png "屏幕截图.png")
 
 ###### 店铺页面
 
-![image-20200621111626027](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621111626027.png)
-
-
-
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165833_b4ff351c_5388780.png "屏幕截图.png")
 
 
 店铺详情
 
-![image-20200621111653052](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621111653052.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165858_e3dc69dc_5388780.png "屏幕截图.png")
+
 
 ###### 我的订单
 
-![image-20200621111834918](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621111834918.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/170029_78e34600_5388780.png "屏幕截图.png")
+
 
 ###### 提交评价
 
-![image-20200621112235353](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621112235353.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165952_cf51b398_5388780.png "屏幕截图.png")
 
 ###### 查看我的评价
 
-![image-20200621112943616](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200621112943616.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/165921_c867f65d_5388780.png "屏幕截图.png")
 
 ###### 查看店家评价
 
- ![img](https://images.gitee.com/uploads/images/2020/0626/164900_2c1f2a78_5388780.png)![点击并拖拽以移动](data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==) 
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/170403_d41143e4_5388780.png "屏幕截图.png")
 
 ###### 带Googlesuggest功能的搜索框，目前只有火狐游览器支持该功能
 
-![image-20200624232442170](C:\Users\Dpang\AppData\Roaming\Typora\typora-user-images\image-20200624232442170.png)
+![输入图片说明](https://images.gitee.com/uploads/images/2020/0626/170425_809fd7c1_5388780.png "屏幕截图.png")
