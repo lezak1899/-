@@ -19,6 +19,7 @@ public interface CustomerService {
      */
     Customer queryById(Integer id);
 
+
     /**
      * 查询多条数据
      *
