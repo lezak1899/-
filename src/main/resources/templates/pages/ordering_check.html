@@ -270,7 +270,7 @@
                                         <P style="color: #6c6c6c;font-weight: 200;font-size: 15px">配送地址：[[${ordering.address}]]</P>
                                     </div>
                                     <div style="display: inline-block;width: 340px;color: #6c6c6c;font-weight: 200;font-size: 15px">
-                                         <span th:if=" ${ordering.orderingState} eq 2 ">创建时间：<span th:text="${#dates.format(ordering.startTime, 'yyyy-MM-dd HH:mm:ss')}"/></span>
+                                         <span th:if=" ${ordering.orderingState} eq 2 ">创建时间：<span th:text="${#dates.format(ordering.startTime, 'yyyy-MM-dd HH:mm:ss')}"/></span><br>
                                         <span th:if=" ${ordering.orderingState} eq 2 ">送达时间：<span th:text="${#dates.format(ordering.endTime, 'yyyy-MM-dd HH:mm:ss')}"/></span>
 
 
