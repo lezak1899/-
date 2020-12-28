@@ -74,7 +74,7 @@
         <!--······················选项卡···························-->
         <div class="layui-tab layui-tab-card">
             <ul class="layui-tab-title">
-                <li class="layui-this">待送达</li>
+                <li class="layui-this">配送中</li>
                 <li>已送达</li>
                 <li>所有订单</li>
             </ul>
@@ -92,10 +92,10 @@
 
                     <span th:each="ordering: ${orderingWithDishesList}">
                         <span th:if=" ${ordering.orderingState} eq 1 ">
-                        <!--<c:if test="${ordering.orderingState == 1 }">-->
                             <table border="1" bordercolor="#bfbfbf" style="border-collapse:collapse;width: 100%;margin-bottom: 30px;">
                                 <tr style="width: 100%;height: 30px;">
                                     <td  colspan="3" style="line-height: 30px;height:30px;background-color: #f1f1f1;">
+
                                         <div style="width: 120px;margin:0 10px;display: inline-block;margin-left: 10px;">
                                             正在配送
                                         </div>
@@ -153,6 +153,11 @@
                         </span>
 
                     </span>
+                    <!--分页栏-->
+                    <div id="demo1" style="text-align: center"></div>
+                    <div id="demo20"></div>
+
+
 
                 </div>
 
@@ -341,8 +346,6 @@
         }
     );
 
-
-
         $(function(){
             $(".evaluate").click(function () {
                 var orderingId = $(this).attr('value');
@@ -358,9 +361,42 @@
             });
 
         });
-
-
-
 </script>
+
+<script>
+    layui.use(['laypage', 'layer'], function(){
+        var laypage = layui.laypage
+            ,layer = layui.layer;
+
+        //总页数大于页码总数
+        laypage.render({
+            elem: 'demo1'
+            ,count: 70 //数据总数
+
+            ,jump: function(obj){
+                console.log(obj)
+            }
+        });
+
+        //调用分页
+        laypage.render({
+            elem: 'demo20'
+            ,count: data.length
+            ,jump: function(obj){
+                //模拟渲染
+                document.getElementById('biuuu_city_list').innerHTML = function(){
+                    var arr = []
+                        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+                    layui.each(thisData, function(index, item){
+                        arr.push('<li>'+ item +'</li>');
+                    });
+                    return arr.join('');
+                }();
+            }
+        });
+
+    });
+</script>
+
 </body>
 </html>
