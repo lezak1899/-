@@ -7,6 +7,7 @@ import edu.lingnan.eattingwhat2.service.DishesService;
 import edu.lingnan.eattingwhat2.service.EvaluationService;
 import edu.lingnan.eattingwhat2.service.OrderingService;
 import edu.lingnan.eattingwhat2.service.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,16 +32,16 @@ public class EvaluationController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private EvaluationService evaluationService;
 
-    @Resource
+    @Autowired
     private DishesService dishesService;
 
-    @Resource
+    @Autowired
     private OrderingService orderingService;
 
-    @Resource
+    @Autowired
     private StoreService storeService;
 
     @GetMapping("toEvaluationCheck")

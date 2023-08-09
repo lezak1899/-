@@ -2,7 +2,7 @@
 
 项目源码地址：https://gitee.com/likunzhu/eattingwhat2.git
 
-项目在线地址：http://47.106.228.148:8080/customer/toHome
+本地启动地址：http://localhost:8080/customer/toHome
 
 初始用户：
 

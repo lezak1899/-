@@ -2,8 +2,12 @@ package edu.lingnan.eattingwhat2.service.impl;
 
 import edu.lingnan.eattingwhat2.entity.Ordering;
 import edu.lingnan.eattingwhat2.dao.OrderingDao;
+import edu.lingnan.eattingwhat2.service.OrderingDishesService;
 import edu.lingnan.eattingwhat2.service.OrderingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,7 +20,14 @@ import java.util.List;
  */
 @Service("orderingService")
 public class OrderingServiceImpl implements OrderingService {
-    @Resource
+
+    @Autowired
+    private OrderingService orderingService;
+
+    @Autowired
+    private OrderingDishesService orderingDishesService;
+
+    @Autowired
     private OrderingDao orderingDao;
 
     /**
@@ -82,5 +93,28 @@ public class OrderingServiceImpl implements OrderingService {
         Ordering ordering=new Ordering();
         ordering.setUserId(customerId);
         return orderingDao.queryAllByDesc(ordering);
+    }
+
+    @Override
+    public Ordering newTestInstance(){
+        Ordering ordering =new Ordering();
+        ordering.setOrderingState(1);
+        ordering.setStoreId(40170001);
+        return ordering;
+    }
+
+    @Transactional(propagation= Propagation.REQUIRED)
+    @Override
+    public void insertIntoOrdering() throws Exception {
+        this.orderingService.insert(this.orderingService.newTestInstance());
+        this.orderingService.insertIntoOrderingDishes();
+        //throw new RuntimeException();
+    }
+
+    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    @Override
+    public void insertIntoOrderingDishes() throws Exception {
+        this.orderingDishesService.insert(this.orderingDishesService.newTestInstance());
+        throw new RuntimeException();
     }
 }

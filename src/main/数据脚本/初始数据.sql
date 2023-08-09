@@ -1,5 +1,5 @@
 
-set names gbk;
+set names utf8mb4;
 drop database if exists `eattingwhat2`;
 create database `eattingwhat2`;
 use `eattingwhat2`;
@@ -19,7 +19,7 @@ CREATE TABLE `customer` (
   `reg_member` datetime DEFAULT NULL,
   `past_member` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20170005 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20170005 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `customer` VALUES ('20170001', '2017764402.jpg', '小a', '123456', '18475961111', '广东省湛江市岭南师范学院新民B', '2019-09-30 00:00:00', '2020-06-24 22:43:32', '2', '4', '2019-09-30 00:00:00', '2021-09-30 00:00:00');
@@ -35,7 +35,7 @@ CREATE TABLE `dishes` (
   `describle` varchar(100) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60170028 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60170028 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `dishes` VALUES ('60170001', '40170001', '毛血旺烤鱼', '13.5', '11+1种味道，热辣集结过足瘾', '401700011.png');
@@ -83,7 +83,7 @@ CREATE TABLE `evaluation` (
   `image3` varchar(255) DEFAULT NULL,
   `image4` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70170003 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=70170003 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `evaluation` VALUES ('70170001', '0', '20170001', '2017764402.jpg', '小a', '50170003', '40170001', '2020-06-21 11:29:18', '5', '就在印象汇负一楼，挺好找到的，经常来它家吃烤鱼，价格实惠，烤鱼味道也很不错，生意很不错，经常都是需要排队一段时间才能等到位置，服务态度也不错。', '1da42303dc5243a3a8582984a9295671.jpg', '95dceee8abee4aaeb1dece3d2c53e24d.jpg', '4b56689380ed48a8987127bc6e5ea333.jpg', '7da7f3d23f3d40b2b25a9caff634e637.jpg');
@@ -101,7 +101,7 @@ CREATE TABLE `ordering` (
   `end_time` datetime DEFAULT NULL,
   `price_sum` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50170005 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50170005 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `ordering` VALUES ('50170001', '20170001', '30170001', '40170002', '2020-06-16 16:46:08', '岭南师范学院新民B', '1', null, '121.5');
@@ -118,7 +118,7 @@ CREATE TABLE `ordering_dishes` (
   `dishes_count` int(11) DEFAULT NULL,
   `dishes_price` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `ordering_dishes` VALUES ('1001', '50170001', '60170006', '汉堡包', '4', '13.5');
@@ -147,7 +147,7 @@ CREATE TABLE `store` (
   `logo` varchar(255) DEFAULT NULL,
   `storefront` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40170012 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40170012 DEFAULT CHARSET=utf8mb4;
 
 
 INSERT INTO `store` VALUES ('40170001', '探鱼', '1234', '0668-1234', '湛江赤坎区寸金四横路19号', '2012-09-30 00:00:00', '2020-06-16 16:38:42', '4', '1003', '4.1', '1', '作为专业的烤鱼品牌，探鱼从取名上就开始用心。探，有探索的意义，象征欢迎顾客来探鱼探寻美食美味，也象征着探鱼对美味的不断探索，不断创新的精神！\n探鱼希望带给大家童年情怀，顾客在探鱼餐厅不止是吃到美味，还能够有一些情感上的呼应和记忆，能够唤起一些甜蜜的美好的记忆。顾客在感受探鱼的时候，遇见了一个童年的自己。', '探鱼logo.png', '探鱼店面.jpg');

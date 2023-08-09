@@ -7,7 +7,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/eattingwhat2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
     driverClassName: com.mysql.jdbc.Driver
     username: root
-    password: 1234
+    password: 123456
 
   mvc:
     static-path-pattern: /static/**

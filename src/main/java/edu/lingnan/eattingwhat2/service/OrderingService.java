@@ -55,4 +55,13 @@ public interface OrderingService {
 
     List<Ordering> queryAllByCustomerId(int customerId);
 
+    Ordering newTestInstance();
+
+
+    public void insertIntoOrdering() throws Exception;
+
+    public void insertIntoOrderingDishes() throws Exception;
+
+
+
 }

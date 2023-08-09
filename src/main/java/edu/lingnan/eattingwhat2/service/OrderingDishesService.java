@@ -52,9 +52,9 @@ public interface OrderingDishesService {
      */
     boolean deleteById(Integer id);
 
-
     List<OrderingDishes> queryAllByOrderingId(int OrderingId);
 
+    public OrderingDishes newTestInstance();
 
 
 

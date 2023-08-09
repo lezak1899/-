@@ -3,6 +3,7 @@ package edu.lingnan.eattingwhat2.service.impl;
 import edu.lingnan.eattingwhat2.entity.Dishes;
 import edu.lingnan.eattingwhat2.dao.DishesDao;
 import edu.lingnan.eattingwhat2.service.DishesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Service("dishesService")
 public class DishesServiceImpl implements DishesService {
-    @Resource
+    @Autowired
     private DishesDao dishesDao;
 
     /**

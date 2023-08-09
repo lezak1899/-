@@ -3,6 +3,7 @@ package edu.lingnan.eattingwhat2.service.impl;
 import edu.lingnan.eattingwhat2.entity.Store;
 import edu.lingnan.eattingwhat2.dao.StoreDao;
 import edu.lingnan.eattingwhat2.service.StoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Service("storeService")
 public class StoreServiceImpl implements StoreService {
-    @Resource
+    @Autowired
     private StoreDao storeDao;
 
     /**

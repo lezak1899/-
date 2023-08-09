@@ -2,6 +2,7 @@ package edu.lingnan.eattingwhat2.controller;
 
 import edu.lingnan.eattingwhat2.entity.Customer;
 import edu.lingnan.eattingwhat2.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -27,7 +28,7 @@ public class CustomerController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private CustomerService customerService;
 
     /**

@@ -2,6 +2,7 @@ package edu.lingnan.eattingwhat2.controller;
 
 import edu.lingnan.eattingwhat2.entity.OrderingDishes;
 import edu.lingnan.eattingwhat2.service.OrderingDishesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,7 +19,7 @@ public class OrderingDishesController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private OrderingDishesService orderingDishesService;
 
 

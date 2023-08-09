@@ -1,8 +1,11 @@
 package edu.lingnan.eattingwhat2.service.impl;
 
+import edu.lingnan.eattingwhat2.entity.Ordering;
 import edu.lingnan.eattingwhat2.entity.OrderingDishes;
 import edu.lingnan.eattingwhat2.dao.OrderingDishesDao;
 import edu.lingnan.eattingwhat2.service.OrderingDishesService;
+import edu.lingnan.eattingwhat2.vo.OrderingDishesInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +19,7 @@ import java.util.List;
  */
 @Service("orderingDishesService")
 public class OrderingDishesServiceImpl implements OrderingDishesService {
-    @Resource
+    @Autowired
     private OrderingDishesDao orderingDishesDao;
 
     /**
@@ -82,5 +85,12 @@ public class OrderingDishesServiceImpl implements OrderingDishesService {
         OrderingDishes orderingDishes =new OrderingDishes();
         orderingDishes.setOrderingId(orderingId);
         return orderingDishesDao.queryAll(orderingDishes);
+    }
+
+    public OrderingDishes newTestInstance(){
+        OrderingDishes orderingDishes =new OrderingDishes();
+        orderingDishes.setDishesCount(111);
+        orderingDishes.setDishesName("Test");
+        return orderingDishes;
     }
 }

@@ -7,6 +7,7 @@ import edu.lingnan.eattingwhat2.service.*;
 import edu.lingnan.eattingwhat2.vo.DishesJson;
 import edu.lingnan.eattingwhat2.vo.OrderingDishesInfo;
 import edu.lingnan.eattingwhat2.vo.OrderingWithDishes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,25 +30,25 @@ public class OrderingController {
     /**
      * 服务对象
      */
-    @Resource
+    @Autowired
     private OrderingService orderingService;
 
-    @Resource
+    @Autowired
     private OrderingDishesService orderingDishesService;
 
-    @Resource
+    @Autowired
     private StoreService storeService;
 
-    @Resource
+    @Autowired
     private DishesService dishesService;
 
-    @Resource
+    @Autowired
     private CustomerService customerService;
 
-    @Resource
+    @Autowired
     private Ordering ordering;
 
-    @Resource
+    @Autowired
     private OrderingDishes orderingDishes;
 
     /**
