@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(exposeProxy = true)
 @SpringBootApplication
-public class eattingwhatApplication {
+public class EattingwhatApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(eattingwhatApplication.class, args);
+        SpringApplication.run(EattingwhatApplication.class, args);
     }
 
 //    @Override
