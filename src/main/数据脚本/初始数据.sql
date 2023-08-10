@@ -1,8 +1,8 @@
 
 set names utf8mb4;
-drop database if exists `eattingwhat2`;
-create database `eattingwhat2`;
-use `eattingwhat2`;
+drop database if exists `eattingwhat`;
+create database `eattingwhat`;
+use `eattingwhat`;
 
 
 CREATE TABLE `customer` (

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.lingnan.eattingwhat2.dao.StoreDao">
+<mapper namespace="edu.lingnan.eattingwhat.dao.StoreDao">
 
-    <resultMap type="edu.lingnan.eattingwhat2.entity.Store" id="StoreMap">
+    <resultMap type="edu.lingnan.eattingwhat.entity.Store" id="StoreMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="password" column="password" jdbcType="VARCHAR"/>
@@ -23,7 +23,7 @@
     <select id="queryById" resultMap="StoreMap">
         select
           id, name, password, phone, address, reg_date, last_login_date, ssuper, monthly_sales, store_mark, store_state, describle, logo, storefront
-        from eattingwhat2.store
+        from eattingwhat.store
         where id = #{id}
     </select>
 
@@ -31,7 +31,7 @@
     <select id="queryAllByLimit" resultMap="StoreMap">
         select
           id, name, password, phone, address, reg_date, last_login_date, ssuper, monthly_sales, store_mark, store_state, describle, logo, storefront
-        from eattingwhat2.store
+        from eattingwhat.store
         limit #{offset}, #{limit}
     </select>
 
@@ -39,7 +39,7 @@
     <select id="queryAll" resultMap="StoreMap">
         select
           id, name, password, phone, address, reg_date, last_login_date, ssuper, monthly_sales, store_mark, store_state, describle, logo, storefront
-        from eattingwhat2.store
+        from eattingwhat.store
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -88,13 +88,13 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat2.store(name, password, phone, address, reg_date, last_login_date, ssuper, monthly_sales, store_mark, store_state, describle, logo, storefront)
+        insert into eattingwhat.store(name, password, phone, address, reg_date, last_login_date, ssuper, monthly_sales, store_mark, store_state, describle, logo, storefront)
         values (#{name}, #{password}, #{phone}, #{address}, #{regDate}, #{lastLoginDate}, #{ssuper}, #{monthlySales}, #{storeMark}, #{storeState}, #{describle}, #{logo}, #{storefront})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat2.store
+        update eattingwhat.store
         <set>
             <if test="name != null and name != ''">
                 name = #{name},
@@ -141,12 +141,12 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat2.store where id = #{id}
+        delete from eattingwhat.store where id = #{id}
     </delete>
 
      <!--通过关键字查询匹配的所有商店-->
     <select id="selectByNameLike" resultMap="StoreMap">
-        select * from eattingwhat2.store where name like "%"#{storeNameStr}"%"
+        select * from eattingwhat.store where name like "%"#{storeNameStr}"%"
     </select>
 
 </mapper>

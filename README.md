@@ -1,6 +1,6 @@
-### 项目名称：eattingwhat2（吃什么）
+### 项目名称：eattingwhat（吃什么）
 
-项目源码地址：https://gitee.com/likunzhu/eattingwhat2.git
+项目源码地址：https://gitee.com/likunzhu/eattingwhat.git
 
 本地启动地址：http://localhost:8080/customer/toHome
 
@@ -24,7 +24,7 @@
 
 ### 2、背景
 
-为了更好适应互联时代，为了生活更加便捷，为了让消费者足不出门就可以享受到店家的美食。eattingwhat2旨在拉近消费者和客户的距离，同时给消费者和店家搭建一个便捷的交易平台。
+为了更好适应互联时代，为了生活更加便捷，为了让消费者足不出门就可以享受到店家的美食。eattingwhat旨在拉近消费者和客户的距离，同时给消费者和店家搭建一个便捷的交易平台。
 
 
 

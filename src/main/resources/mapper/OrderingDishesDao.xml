@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.lingnan.eattingwhat2.dao.OrderingDishesDao">
+<mapper namespace="edu.lingnan.eattingwhat.dao.OrderingDishesDao">
 
-    <resultMap type="edu.lingnan.eattingwhat2.entity.OrderingDishes" id="OrderingDishesMap">
+    <resultMap type="edu.lingnan.eattingwhat.entity.OrderingDishes" id="OrderingDishesMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="orderingId" column="ordering_id" jdbcType="INTEGER"/>
         <result property="dishesId" column="dishes_id" jdbcType="INTEGER"/>
@@ -15,7 +15,7 @@
     <select id="queryById" resultMap="OrderingDishesMap">
         select
           id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat2.ordering_dishes
+        from eattingwhat.ordering_dishes
         where id = #{id}
     </select>
 
@@ -23,7 +23,7 @@
     <select id="queryAllByLimit" resultMap="OrderingDishesMap">
         select
           id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat2.ordering_dishes
+        from eattingwhat.ordering_dishes
         limit #{offset}, #{limit}
     </select>
 
@@ -31,7 +31,7 @@
     <select id="queryAll" resultMap="OrderingDishesMap">
         select
           id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat2.ordering_dishes
+        from eattingwhat.ordering_dishes
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -56,13 +56,13 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat2.ordering_dishes(ordering_id, dishes_id, dishes_name, dishes_count, dishes_price)
+        insert into eattingwhat.ordering_dishes(ordering_id, dishes_id, dishes_name, dishes_count, dishes_price)
         values (#{orderingId}, #{dishesId}, #{dishesName}, #{dishesCount}, #{dishesPrice})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat2.ordering_dishes
+        update eattingwhat.ordering_dishes
         <set>
             <if test="orderingId != null">
                 ordering_id = #{orderingId},
@@ -85,7 +85,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat2.ordering_dishes where id = #{id}
+        delete from eattingwhat.ordering_dishes where id = #{id}
     </delete>
 
 </mapper>

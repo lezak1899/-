@@ -1,7 +1,7 @@
-package edu.lingnan.eattingwhat2.controller;
+package edu.lingnan.eattingwhat.controller;
 
-import edu.lingnan.eattingwhat2.entity.Customer;
-import edu.lingnan.eattingwhat2.service.CustomerService;
+import edu.lingnan.eattingwhat.entity.Customer;
+import edu.lingnan.eattingwhat.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -210,7 +210,7 @@ public class CustomerController {
         //设置图片上传路径,是目标文件夹的路径
 
 
-        String filePath="E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";//target文件的路径
+        String filePath="E:\\idea_workspace\\eattingwhat\\target\\classes\\static\\upload";//target文件的路径
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
         //String filePath="/usr/local/static/upload";
 

@@ -1,10 +1,10 @@
-package edu.lingnan.eattingwhat2;
+package edu.lingnan.eattingwhat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Eattingwhat2ApplicationTests {
+class eattingwhatApplicationTests {
 
     @Test
     void contextLoads() {

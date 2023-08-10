@@ -1,7 +1,7 @@
-package edu.lingnan.eattingwhat2.configuration;
+package edu.lingnan.eattingwhat.configuration;
 
 
-import edu.lingnan.eattingwhat2.interceptor.LoginInterceptor;
+import edu.lingnan.eattingwhat.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

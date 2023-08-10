@@ -1,8 +1,8 @@
-package edu.lingnan.eattingwhat2.service.impl;
+package edu.lingnan.eattingwhat.service.impl;
 
-import edu.lingnan.eattingwhat2.entity.Customer;
-import edu.lingnan.eattingwhat2.dao.CustomerDao;
-import edu.lingnan.eattingwhat2.service.CustomerService;
+import edu.lingnan.eattingwhat.entity.Customer;
+import edu.lingnan.eattingwhat.dao.CustomerDao;
+import edu.lingnan.eattingwhat.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

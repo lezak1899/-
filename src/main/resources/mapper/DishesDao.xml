@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.lingnan.eattingwhat2.dao.DishesDao">
+<mapper namespace="edu.lingnan.eattingwhat.dao.DishesDao">
 
-    <resultMap type="edu.lingnan.eattingwhat2.entity.Dishes" id="DishesMap">
+    <resultMap type="edu.lingnan.eattingwhat.entity.Dishes" id="DishesMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="storeId" column="store_id" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -15,7 +15,7 @@
     <select id="queryById" resultMap="DishesMap">
         select
           id, store_id, name, price, describle, image
-        from eattingwhat2.dishes
+        from eattingwhat.dishes
         where id = #{id}
     </select>
 
@@ -23,7 +23,7 @@
     <select id="queryAllByLimit" resultMap="DishesMap">
         select
           id, store_id, name, price, describle, image
-        from eattingwhat2.dishes
+        from eattingwhat.dishes
         limit #{offset}, #{limit}
     </select>
 
@@ -31,7 +31,7 @@
     <select id="queryAll" resultMap="DishesMap">
         select
           id, store_id, name, price, describle, image
-        from eattingwhat2.dishes
+        from eattingwhat.dishes
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -56,13 +56,13 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat2.dishes(store_id, name, price, describle, image)
+        insert into eattingwhat.dishes(store_id, name, price, describle, image)
         values (#{storeId}, #{name}, #{price}, #{describle}, #{image})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat2.dishes
+        update eattingwhat.dishes
         <set>
             <if test="storeId != null">
                 store_id = #{storeId},
@@ -85,7 +85,7 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat2.dishes where id = #{id}
+        delete from eattingwhat.dishes where id = #{id}
     </delete>
 
 </mapper>

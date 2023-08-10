@@ -1,12 +1,12 @@
-package edu.lingnan.eattingwhat2.controller;
+package edu.lingnan.eattingwhat.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import edu.lingnan.eattingwhat2.entity.*;
-import edu.lingnan.eattingwhat2.service.DishesService;
-import edu.lingnan.eattingwhat2.service.EvaluationService;
-import edu.lingnan.eattingwhat2.service.OrderingService;
-import edu.lingnan.eattingwhat2.service.StoreService;
+import edu.lingnan.eattingwhat.entity.*;
+import edu.lingnan.eattingwhat.service.DishesService;
+import edu.lingnan.eattingwhat.service.EvaluationService;
+import edu.lingnan.eattingwhat.service.OrderingService;
+import edu.lingnan.eattingwhat.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,7 +81,7 @@ public class EvaluationController {
 
 
         //设置图片上传路径,是目标文件夹的路径
-        //String filePath = "E:\\idea_workspace\\eattingwhat2\\target\\classes\\static\\upload";
+        //String filePath = "E:\\idea_workspace\\eattingwhat\\target\\classes\\static\\upload";
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
         String filePath="/usr/local/static/upload";
 

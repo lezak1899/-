@@ -1,4 +1,4 @@
-package edu.lingnan.eattingwhat2.configuration;
+package edu.lingnan.eattingwhat.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

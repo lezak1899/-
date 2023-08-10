@@ -1,6 +1,6 @@
-package edu.lingnan.eattingwhat2.service;
+package edu.lingnan.eattingwhat.service;
 
-import edu.lingnan.eattingwhat2.entity.OrderingDishes;
+import edu.lingnan.eattingwhat.entity.OrderingDishes;
 import java.util.List;
 
 /**

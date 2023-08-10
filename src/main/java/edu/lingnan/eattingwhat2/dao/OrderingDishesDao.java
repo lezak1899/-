@@ -1,6 +1,6 @@
-package edu.lingnan.eattingwhat2.dao;
+package edu.lingnan.eattingwhat.dao;
 
-import edu.lingnan.eattingwhat2.entity.OrderingDishes;
+import edu.lingnan.eattingwhat.entity.OrderingDishes;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

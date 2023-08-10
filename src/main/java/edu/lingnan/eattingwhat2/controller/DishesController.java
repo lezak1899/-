@@ -1,7 +1,7 @@
-package edu.lingnan.eattingwhat2.controller;
+package edu.lingnan.eattingwhat.controller;
 
-import edu.lingnan.eattingwhat2.entity.Dishes;
-import edu.lingnan.eattingwhat2.service.DishesService;
+import edu.lingnan.eattingwhat.entity.Dishes;
+import edu.lingnan.eattingwhat.service.DishesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

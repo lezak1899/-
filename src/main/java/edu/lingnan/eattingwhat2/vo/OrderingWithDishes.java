@@ -1,8 +1,8 @@
-package edu.lingnan.eattingwhat2.vo;
+package edu.lingnan.eattingwhat.vo;
 
 
 
-import edu.lingnan.eattingwhat2.entity.Ordering;
+import edu.lingnan.eattingwhat.entity.Ordering;
 
 import java.io.Serializable;
 import java.util.List;

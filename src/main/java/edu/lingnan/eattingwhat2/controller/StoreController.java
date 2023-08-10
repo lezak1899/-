@@ -1,12 +1,12 @@
-package edu.lingnan.eattingwhat2.controller;
+package edu.lingnan.eattingwhat.controller;
 
 
-import edu.lingnan.eattingwhat2.entity.Dishes;
-import edu.lingnan.eattingwhat2.entity.Evaluation;
-import edu.lingnan.eattingwhat2.entity.Store;
-import edu.lingnan.eattingwhat2.service.DishesService;
-import edu.lingnan.eattingwhat2.service.EvaluationService;
-import edu.lingnan.eattingwhat2.service.StoreService;
+import edu.lingnan.eattingwhat.entity.Dishes;
+import edu.lingnan.eattingwhat.entity.Evaluation;
+import edu.lingnan.eattingwhat.entity.Store;
+import edu.lingnan.eattingwhat.service.DishesService;
+import edu.lingnan.eattingwhat.service.EvaluationService;
+import edu.lingnan.eattingwhat.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

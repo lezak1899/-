@@ -1,4 +1,4 @@
-package edu.lingnan.eattingwhat2.vo;
+package edu.lingnan.eattingwhat.vo;
 
 public class DishesJson {
 

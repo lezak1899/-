@@ -1,6 +1,6 @@
-package edu.lingnan.eattingwhat2.interceptor;
+package edu.lingnan.eattingwhat.interceptor;
 
-import edu.lingnan.eattingwhat2.entity.Customer;
+import edu.lingnan.eattingwhat.entity.Customer;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 

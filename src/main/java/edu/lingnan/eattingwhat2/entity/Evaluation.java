@@ -1,4 +1,4 @@
-package edu.lingnan.eattingwhat2.entity;
+package edu.lingnan.eattingwhat.entity;
 
 import org.springframework.stereotype.Component;
 
