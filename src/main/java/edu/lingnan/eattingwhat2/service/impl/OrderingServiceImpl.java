@@ -107,14 +107,9 @@ public class OrderingServiceImpl implements OrderingService {
     @Override
     public void insertIntoOrdering() throws Exception {
         this.orderingService.insert(this.orderingService.newTestInstance());
-        this.orderingService.insertIntoOrderingDishes();
-        //throw new RuntimeException();
-    }
-
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
-    @Override
-    public void insertIntoOrderingDishes() throws Exception {
-        this.orderingDishesService.insert(this.orderingDishesService.newTestInstance());
+        this.orderingDishesService.insertIntoOrderingDishes();
         throw new RuntimeException();
     }
+
+
 }

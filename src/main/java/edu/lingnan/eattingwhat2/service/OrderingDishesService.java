@@ -54,6 +54,8 @@ public interface OrderingDishesService {
 
     List<OrderingDishes> queryAllByOrderingId(int OrderingId);
 
+    public void insertIntoOrderingDishes() throws Exception;
+
     public OrderingDishes newTestInstance();
 
 

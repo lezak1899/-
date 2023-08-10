@@ -60,7 +60,6 @@ public interface OrderingService {
 
     public void insertIntoOrdering() throws Exception;
 
-    public void insertIntoOrderingDishes() throws Exception;
 
 
 

@@ -7,6 +7,8 @@ import edu.lingnan.eattingwhat2.service.OrderingDishesService;
 import edu.lingnan.eattingwhat2.vo.OrderingDishesInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -19,6 +21,11 @@ import java.util.List;
  */
 @Service("orderingDishesService")
 public class OrderingDishesServiceImpl implements OrderingDishesService {
+
+
+    @Autowired
+    private OrderingDishesService orderingDishesService;
+
     @Autowired
     private OrderingDishesDao orderingDishesDao;
 
@@ -87,10 +94,21 @@ public class OrderingDishesServiceImpl implements OrderingDishesService {
         return orderingDishesDao.queryAll(orderingDishes);
     }
 
+
+    @Override
     public OrderingDishes newTestInstance(){
         OrderingDishes orderingDishes =new OrderingDishes();
         orderingDishes.setDishesCount(111);
         orderingDishes.setDishesName("Test");
         return orderingDishes;
     }
+
+    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    @Override
+    public void insertIntoOrderingDishes() throws Exception {
+        this.orderingDishesService.insert(this.orderingDishesService.newTestInstance());
+        //throw new RuntimeException();
+    }
+
+
 }
