@@ -1,4 +1,4 @@
-package edu.lingnan.eattingwhat.configuration;
+package edu.lingnan.eattingwhat.config;
 
 
 import edu.lingnan.eattingwhat.interceptor.LoginInterceptor;

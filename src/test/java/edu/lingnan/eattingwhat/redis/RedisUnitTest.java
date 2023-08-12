@@ -1,7 +1,7 @@
-package edu.lingnan.eattingwhat.transaction;
+package edu.lingnan.eattingwhat.redis;
 
 
-import edu.lingnan.eattingwhat.modules.service.OrderingService;
+import edu.lingnan.eattingwhat.common.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +10,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class TransactionUnitTest{
+public class RedisUnitTest {
 
     @Autowired
-    private OrderingService orderingService;
+    private RedisService redisService;
 
     @Test
-    public void testTransactionRequire() throws Exception {
-        this.orderingService.insertIntoOrdering();
+    public void redisTest(){
+        this.redisService.setValue("lezak_name","lezak");
+        System.out.println(this.redisService.getValue("money"));
     }
 
 
