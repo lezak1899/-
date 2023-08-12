@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.lingnan.eattingwhat.dao.EvaluationDao">
+<mapper namespace="edu.lingnan.eattingwhat.modules.dao.EvaluationDao">
 
-    <resultMap type="edu.lingnan.eattingwhat.entity.Evaluation" id="EvaluationMap">
+    <resultMap type="edu.lingnan.eattingwhat.modules.entity.Evaluation" id="EvaluationMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="anonymity" column="anonymity" jdbcType="INTEGER"/>
         <result property="customerId" column="customer_id" jdbcType="INTEGER"/>

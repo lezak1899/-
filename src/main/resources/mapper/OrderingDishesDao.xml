@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.lingnan.eattingwhat.dao.OrderingDishesDao">
+<mapper namespace="edu.lingnan.eattingwhat.modules.dao.OrderingDishesDao">
 
-    <resultMap type="edu.lingnan.eattingwhat.entity.OrderingDishes" id="OrderingDishesMap">
+    <resultMap type="edu.lingnan.eattingwhat.modules.entity.OrderingDishes" id="OrderingDishesMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="orderingId" column="ordering_id" jdbcType="INTEGER"/>
         <result property="dishesId" column="dishes_id" jdbcType="INTEGER"/>

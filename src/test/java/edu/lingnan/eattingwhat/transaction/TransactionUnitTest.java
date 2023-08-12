@@ -1,7 +1,7 @@
 package edu.lingnan.eattingwhat.transaction;
 
 
-import edu.lingnan.eattingwhat.service.OrderingService;
+import edu.lingnan.eattingwhat.modules.service.OrderingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
