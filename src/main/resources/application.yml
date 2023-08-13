@@ -11,6 +11,10 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
 
   mvc:
     static-path-pattern: /static/**

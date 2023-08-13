@@ -1,7 +1,7 @@
-package edu.lingnan.eattingwhat.redis;
+package edu.lingnan.eattingwhat.activemq;
 
 
-import edu.lingnan.eattingwhat.common.redis.RedisService;
+import edu.lingnan.eattingwhat.common.activemq.MessageProducer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,16 +10,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class RedisUnitTest {
+public class ActiveMQUnitTest {
 
     @Autowired
-    private RedisService redisService;
+    private MessageProducer messageProducer;
 
     @Test
-    public void redisTest(){
-        this.redisService.setValue("lezak_name","lezak");
-        System.out.println(this.redisService.getValue("money"));
+    public void unitTest(){
+        this.messageProducer.sendMessage("UnitTest","0000000000000000000090999999999999999999");
     }
-
-
 }
