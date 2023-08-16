@@ -28,3 +28,12 @@ mybatis:
 file:
   uploadFolder: /usr/local/upload
   staticAccessPath: /static/upload/**
+
+
+# 定义线程池的核心线程数
+threadpool:
+  corePoolSize: 5@Configuration
+  # 定义线程池的最大线程数
+  maxPoolSize: 10
+  # 定义线程池的队列容量
+  queueCapacity: 100
