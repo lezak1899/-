@@ -31,9 +31,11 @@ file:
 
 
 # 定义线程池的核心线程数
-threadpool:
+threadPool:
   corePoolSize: 5
   # 定义线程池的最大线程数
   maxPoolSize: 10
   # 定义线程池的队列容量
   queueCapacity: 100
+  # 线程前缀名称，方便辨别
+  threadNamePrefix: eattingwhat-core-threadpool

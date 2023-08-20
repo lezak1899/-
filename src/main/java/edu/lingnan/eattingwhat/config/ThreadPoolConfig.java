@@ -8,6 +8,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 
 /**
@@ -26,16 +27,18 @@ import java.util.concurrent.Executors;
 @EnableAsync
 public class ThreadPoolConfig {
 
-    @Value("${threadpool.corePoolSize}")
+    @Value("${threadPool.corePoolSize}")
     private int corePoolSize;
 
-    @Value("${threadpool.maxPoolSize}")
+    @Value("${threadPool.maxPoolSize}")
     private int maxPoolSize;
 
-    @Value("${threadpool.queueCapacity}")
+    @Value("${threadPool.queueCapacity}")
     private int queueCapacity;
 
-    //https://blog.csdn.net/qq_33204709/article/details/130353652
+    @Value("${threadPool.threadNamePrefix}")
+    private String threadNamePrefix;
+
     @Bean
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -45,9 +48,11 @@ public class ThreadPoolConfig {
         executor.setMaxPoolSize(maxPoolSize);
         // 设置线程池的队列容量
         executor.setQueueCapacity(queueCapacity);
+        // 线程前缀名称，方便辨别
+        executor.setThreadNamePrefix(threadNamePrefix);
 
-        // 其他属性设置...
-
+        //线程池的拒绝策略,默认策略，丢弃任务并抛出RejectedExecutionException异常
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
         return executor;
     }
 
