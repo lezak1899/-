@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class EattingwhatApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(EattingwhatApplication.class, args);
     }
 

@@ -12,8 +12,6 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
 
-
-
         //获取sessiond的登陆信息loginBean
         HttpSession session = request.getSession();
         Customer loginBean = (Customer) session.getAttribute("loginBean");

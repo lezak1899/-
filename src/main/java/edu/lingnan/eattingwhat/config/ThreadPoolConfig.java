@@ -39,6 +39,9 @@ public class ThreadPoolConfig {
     @Value("${threadPool.threadNamePrefix}")
     private String threadNamePrefix;
 
+    @Value("${threadPool.keepAliveTime}")
+    private int keepAliveTime;
+
     @Bean
     public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
@@ -50,7 +53,8 @@ public class ThreadPoolConfig {
         executor.setQueueCapacity(queueCapacity);
         // 线程前缀名称，方便辨别
         executor.setThreadNamePrefix(threadNamePrefix);
-
+        // 非核心线程数的存活时间
+        executor.setKeepAliveSeconds(keepAliveTime);
         //线程池的拒绝策略,默认策略，丢弃任务并抛出RejectedExecutionException异常
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
         return executor;

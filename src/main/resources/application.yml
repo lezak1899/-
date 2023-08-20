@@ -39,3 +39,5 @@ threadPool:
   queueCapacity: 100
   # 线程前缀名称，方便辨别
   threadNamePrefix: eattingwhat-core-threadpool
+  # 非核心线程数的存活时间
+  keepAliveTime: 3600
