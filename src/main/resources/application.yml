@@ -4,7 +4,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3307/eattingwhat?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3307/eattingwhat?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
@@ -32,7 +32,7 @@ file:
 
 # 定义线程池的核心线程数
 threadpool:
-  corePoolSize: 5@Configuration
+  corePoolSize: 5
   # 定义线程池的最大线程数
   maxPoolSize: 10
   # 定义线程池的队列容量
