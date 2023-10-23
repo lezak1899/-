@@ -1,6 +1,6 @@
 package edu.lingnan.luckymall.interceptor;
 
-import edu.lingnan.luckymall.modules.entity.Customer;
+import edu.lingnan.luckymall.modules.customer.entity.Customer;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

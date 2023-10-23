@@ -1,7 +1,7 @@
 package edu.lingnan.luckymall.transaction;
 
 
-import edu.lingnan.luckymall.modules.service.OrderingService;
+import edu.lingnan.luckymall.modules.ordering.service.OrderingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
