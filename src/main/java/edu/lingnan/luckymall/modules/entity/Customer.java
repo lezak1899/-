@@ -14,29 +14,29 @@ import java.io.Serializable;
 @Component
 public class Customer implements Serializable {
     private static final long serialVersionUID = -88032454583038656L;
-    
+
     private Integer id;
-    
+
     private String image;
-    
+
     private String name;
-    
+
     private String password;
-    
+
     private String phone;
-    
+
     private String address;
-    
+
     private Date regDate;
-    
+
     private Date lastLoginDate;
-    
+
     private Integer ssuper;
-    
+
     private Integer redpaper;
-    
+
     private Date regMember;
-    
+
     private Date pastMember;
 
 

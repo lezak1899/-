@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         Customer loginBean = (Customer) session.getAttribute("loginBean");
 
         //判断session中是否有用户数据，如果有，则返回true，继续向下执行
-        if (loginBean!=null) {
+        if (loginBean != null) {
             return true;
         }
         //不符合条件的给出提示信息，并转发到登录页面
@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
 
         request.getRequestDispatcher("/customer/toLogin").forward(request, response);
-        request.setAttribute("msg","你访问的页面需要先登陆才可以查看，请先登陆！");
+        request.setAttribute("msg", "你访问的页面需要先登陆才可以查看，请先登陆！");
         return false;
     }
 

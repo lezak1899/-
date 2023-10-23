@@ -19,25 +19,44 @@
 
     <!--查询单个-->
     <select id="queryById" resultMap="CustomerMap">
-        select
-          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
-        from eattingwhat.customer
+        select id,
+               image,
+               name,
+               password,
+               phone,
+               address,
+               reg_date,
+               last_login_date,
+               ssuper,
+               redpaper,
+               reg_member,
+               past_member
+        from luckymall.customer
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="CustomerMap">
-        select
-          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
-        from eattingwhat.customer
-        limit #{offset}, #{limit}
+        select id,
+               image,
+               name,
+               password,
+               phone,
+               address,
+               reg_date,
+               last_login_date,
+               ssuper,
+               redpaper,
+               reg_member,
+               past_member
+        from luckymall.customer limit #{offset}, #{limit}
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="CustomerMap">
         select
-          id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
-        from eattingwhat.customer
+        id, image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member
+        from luckymall.customer
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -80,13 +99,15 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat.customer(image, name, password, phone, address, reg_date, last_login_date, ssuper, redpaper, reg_member, past_member)
-        values (#{image}, #{name}, #{password}, #{phone}, #{address}, #{regDate}, #{lastLoginDate}, #{ssuper}, #{redpaper}, #{regMember}, #{pastMember})
+        insert into luckymall.customer(image, name, password, phone, address, reg_date, last_login_date, ssuper,
+                                       redpaper, reg_member, past_member)
+        values (#{image}, #{name}, #{password}, #{phone}, #{address}, #{regDate}, #{lastLoginDate}, #{ssuper},
+                #{redpaper}, #{regMember}, #{pastMember})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat.customer
+        update luckymall.customer
         <set>
             <if test="image != null and image != ''">
                 image = #{image},
@@ -127,13 +148,18 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat.customer where id = #{id}
+        delete
+        from luckymall.customer
+        where id = #{id}
     </delete>
 
 
     <!--手机号登录-->
     <select id="loginByPhone" resultMap="CustomerMap">
-        select * from eattingwhat.customer where phone = #{phone} and password = #{password};
+        select *
+        from luckymall.customer
+        where phone = #{phone}
+          and password = #{password};
     </select>
 
 </mapper>

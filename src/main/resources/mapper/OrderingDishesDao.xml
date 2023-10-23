@@ -13,25 +13,32 @@
 
     <!--查询单个-->
     <select id="queryById" resultMap="OrderingDishesMap">
-        select
-          id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat.ordering_dishes
+        select id,
+               ordering_id,
+               dishes_id,
+               dishes_name,
+               dishes_count,
+               dishes_price
+        from luckymall.ordering_dishes
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="OrderingDishesMap">
-        select
-          id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat.ordering_dishes
-        limit #{offset}, #{limit}
+        select id,
+               ordering_id,
+               dishes_id,
+               dishes_name,
+               dishes_count,
+               dishes_price
+        from luckymall.ordering_dishes limit #{offset}, #{limit}
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="OrderingDishesMap">
         select
-          id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
-        from eattingwhat.ordering_dishes
+        id, ordering_id, dishes_id, dishes_name, dishes_count, dishes_price
+        from luckymall.ordering_dishes
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -56,13 +63,13 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat.ordering_dishes(ordering_id, dishes_id, dishes_name, dishes_count, dishes_price)
+        insert into luckymall.ordering_dishes(ordering_id, dishes_id, dishes_name, dishes_count, dishes_price)
         values (#{orderingId}, #{dishesId}, #{dishesName}, #{dishesCount}, #{dishesPrice})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat.ordering_dishes
+        update luckymall.ordering_dishes
         <set>
             <if test="orderingId != null">
                 ordering_id = #{orderingId},
@@ -85,7 +92,9 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat.ordering_dishes where id = #{id}
+        delete
+        from luckymall.ordering_dishes
+        where id = #{id}
     </delete>
 
 </mapper>

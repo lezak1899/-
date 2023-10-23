@@ -1,10 +1,10 @@
-.dishes{
+.dishes {
     height: 150px;
     width: 150px;
 
-    display:inline-block;
+    display: inline-block;
     margin: 10px;
-    text-align:center;
+    text-align: center;
 
 
 }

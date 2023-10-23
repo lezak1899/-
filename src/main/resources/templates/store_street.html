@@ -18,7 +18,9 @@
 <!--······················导航栏···························-->
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo" style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0</div>
+        <div class="layui-logo"
+             style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0
+        </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
@@ -33,17 +35,18 @@
         </ul>
 
         <!--搜索框-->
-        <ul class="user-defined-layui-layout-middle" >
+        <ul class="user-defined-layui-layout-middle">
             <li class="layui-nav-item">
                 <!--  οnsubmit="return false 阻止原生的form表单按回车提交   -->
                 <!--   <form action="${path}/findByName" method="post" οnsubmit="return false"></form>-->
-                <input id="search" type="text" name="storeNameLike" placeholder="根据商店名查询" style="border:1px solid #E6E6E6;;height:28px;width:250px;">
-                <button id="search_submint" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i> 搜索</button>
+                <input id="search" type="text" name="storeNameLike" placeholder="根据商店名查询"
+                       style="border:1px solid #E6E6E6;;height:28px;width:250px;">
+                <button id="search_submint" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i> 搜索
+                </button>
                 <div id="suggest"></div>
 
             </li>
         </ul>
-
 
 
         <!--未登陆-->
@@ -61,7 +64,8 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}" class="layui-nav-img">
+                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}"
+                              class="layui-nav-img">
                         <span th:text="${session.loginBean.name}"></span>
                     </a>
                     <dl class="layui-nav-child">
@@ -76,7 +80,7 @@
 </div>
 <!--······················导航栏结束···························-->
 
-<div  style="width: 75%;margin:0px auto; " >
+<div style="width: 75%;margin:0px auto; ">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
         <legend>美食街</legend>
     </fieldset>
@@ -87,27 +91,32 @@
         <div class="site-doc-icon site-doc-anim">
             <table style="width: 800px;border-collapse:separate; border-spacing:10px 10px;">
                 <tr>
-                    <td style="width: 385px;height: 280px;background-color:#FFD700;"><img height="100%" width="100%" th:src="@{/static/images/麦当劳1.jpg}"></td>
-                    <td style="width: 385px;height: 280px;background-color:#FFD700;"><img  width="100%" th:src="@{/static/images/探鱼1.jpg}"></td>
+                    <td style="width: 385px;height: 280px;background-color:#FFD700;"><img height="100%" width="100%"
+                                                                                          th:src="@{/static/images/麦当劳1.jpg}">
+                    </td>
+                    <td style="width: 385px;height: 280px;background-color:#FFD700;"><img width="100%"
+                                                                                          th:src="@{/static/images/探鱼1.jpg}">
+                    </td>
                 </tr>
-                    <tr  th:each="item: ${allStore}">
-                        <td colspan="2" style="height: 100px;">
+                <tr th:each="item: ${allStore}">
+                    <td colspan="2" style="height: 100px;">
 
-                            <div class="store layui-anim" data-anim="layui-anim-upbit" th:value="${item.id}">
-                                <div class="left" style="align-content: center;">
-                                    <img height="80px;" width="80px" style="border-radius: 10px;overflow: hidden;" th:src="@{/static/images/{logoName}(logoName=${item.logo})}">
-                                </div>
-                                <div class="middle">
-                                    <div class="t1">[[${item.name}]]</div>
-                                    <div class="t2">[[${item.address}]]</div>
-                                    <div class="t3">[[${item.describle}]]</div>
-                                </div>
-                                <div class="right">[[${item.storeMark}]]星</div>
+                        <div class="store layui-anim" data-anim="layui-anim-upbit" th:value="${item.id}">
+                            <div class="left" style="align-content: center;">
+                                <img height="80px;" width="80px" style="border-radius: 10px;overflow: hidden;"
+                                     th:src="@{/static/images/{logoName}(logoName=${item.logo})}">
                             </div>
+                            <div class="middle">
+                                <div class="t1">[[${item.name}]]</div>
+                                <div class="t2">[[${item.address}]]</div>
+                                <div class="t3">[[${item.describle}]]</div>
+                            </div>
+                            <div class="right">[[${item.storeMark}]]星</div>
+                        </div>
 
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
 
 
             </table>
@@ -124,29 +133,29 @@
 <script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
 
 <script>
-    <!--导航栏的下拉菜单-->
-    layui.use('element', function(){
+    <!--
+    导航栏的下拉菜单-->
+    layui.use('element', function () {
         var element = layui.element;
     });
 
     <!--jq实现跳转-->
-    $(function(){
+    $(function () {
 
-        $(".store").click(function(){
+        $(".store").click(function () {
 
-            var storeId=$(this).attr('value');
+            var storeId = $(this).attr('value');
 
-            $(location).attr('href', '/store/enterStoreBystoreId?storeId='+storeId);
+            $(location).attr('href', '/store/enterStoreBystoreId?storeId=' + storeId);
 
         });
 
         $("#search_submint").click(function () {
-            $(location).attr('href', '/store/search?storeNameLike='+$("#search").val());
+            $(location).attr('href', '/store/search?storeNameLike=' + $("#search").val());
         });
 
     });
 </script>
-
 
 
 <script>
@@ -154,20 +163,20 @@
         var $ = layui.jquery;
         //演示动画开始
         //可以在这里修改触发动画的事件
-        $('.site-doc-icon .layui-anim').click(function(){
+        $('.site-doc-icon .layui-anim').click(function () {
             var othis = $(this), anim = othis.data('anim');
 
             //停止循环
-            if(othis.hasClass('layui-anim-loop')){
+            if (othis.hasClass('layui-anim-loop')) {
                 return othis.removeClass(anim);
             }
             othis.removeClass(anim);
-            setTimeout(function(){
+            setTimeout(function () {
                 othis.addClass(anim);
             });
             //恢复渐隐
-            if(anim === 'layui-anim-fadeout'){
-                setTimeout(function(){
+            if (anim === 'layui-anim-fadeout') {
+                setTimeout(function () {
                     othis.removeClass(anim);
                 }, 1300);
             }
@@ -182,33 +191,32 @@
     var highlightindex = -1;
     //延时处理
     var timeout;
-    $(document).ready(function(){
+    $(document).ready(function () {
         //获得JQUERY封装的一个对象,将搜索框封装
         var wordInput = $("#search");
         var wordInputOffset = wordInput.offset();
         //设置DIV为隐藏，并设置边框属性
-        $("#suggest").hide().css("border","1px black solid")
+        $("#suggest").hide().css("border", "1px black solid")
             //.css("position","absolute")
             //input离上面的长度+input的高（宽）
-            .css("top",wordInputOffset.top+wordInput.height()+5+"px")
+            .css("top", wordInputOffset.top + wordInput.height() + 5 + "px")
             //input高左面的的长度
-            .css("left",wordInputOffset.left+"px")
-            .css("background-color","white")
+            .css("left", wordInputOffset.left + "px")
+            .css("background-color", "white")
             //input的宽度
-            .width(wordInput.width()+"px");
+            .width(wordInput.width() + "px");
 
         //如果失去搜索框失去焦点，就把提示隐藏起来，延时1秒是为了有时间执行 $("#search").val(textClick); 这句代码
 
         $("#search").blur(function () {
-            setTimeout(function(){
+            setTimeout(function () {
                 $("#suggest").hide();
-            },300);
+            }, 300);
 
         });
 
 
-
-        $("#search").keyup(function(event){
+        $("#search").keyup(function (event) {
             //Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
             //事件通常与函数结合使用，函数不会在事件发生前被执行！
             //如果存在event,那么var e=event;而如果不存在event，那么var e=window.event; 其中火狐为event，谷歌和ie是window.event
@@ -217,105 +225,105 @@
             var suggest = $("#suggest");
 
 
-            if(myKeyCode>=65 && myKeyCode<=90 || myKeyCode>=48 && myKeyCode<=57 || myKeyCode>=96 && myKeyCode<=105 || myKeyCode==8 || myKeyCode==46){
+            if (myKeyCode >= 65 && myKeyCode <= 90 || myKeyCode >= 48 && myKeyCode <= 57 || myKeyCode >= 96 && myKeyCode <= 105 || myKeyCode == 8 || myKeyCode == 46) {
                 //去除空格
                 var wordText = $.trim($("#search").val());
-                if(wordText!=""){
-                        wordText = $.trim($("#search").val());
-                        $.ajax({
-                            url:"/store/suggestByStr",
-                            type:"get",
-                            data:{
-                                str:wordText
-                            },
-                            success:function(data){
-                                suggest.html(""); //重置div
-                                var wordNodes = data;
-                                //循环输出wordNodes
-                                for(var i in wordNodes){
-                                    var newDiv = $("<div>").attr("id",i);
-                                    newDiv.css("line-height","30px");
-                                    newDiv.html(wordNodes[i].name).appendTo(suggest);
-                                    newDiv.mouseover(function(){
-                                        //将原来的蓝色字段设为白色
-                                        if(highlightindex!=-1){
-                                            $("#suggest").children("div").eq(highlightindex).css("background-color","white");
-                                        }
-                                        highlightindex = $(this).attr("id");
-                                        $(this).css("background-color","#fdbd0f");
-                                    });
-                                    newDiv.mouseout(function(){
-                                        $(this).css("background-color","white");
-                                    });
-                                    newDiv.click(function(){
-                                        $("#suggest").hide();
-                                        var textClick = $("#suggest").children("div").eq(highlightindex).text();
-                                        highlightindex = -1;
-                                        $("#search").val(textClick);
-                                    });
-                                }
-                                //如果返回的wordNodes长度大于0就show
-                                if(wordNodes.length > 0){
-                                    suggest.show();
-                                }else{
-                                    suggest.hide();
+                if (wordText != "") {
+                    wordText = $.trim($("#search").val());
+                    $.ajax({
+                        url: "/store/suggestByStr",
+                        type: "get",
+                        data: {
+                            str: wordText
+                        },
+                        success: function (data) {
+                            suggest.html(""); //重置div
+                            var wordNodes = data;
+                            //循环输出wordNodes
+                            for (var i in wordNodes) {
+                                var newDiv = $("<div>").attr("id", i);
+                                newDiv.css("line-height", "30px");
+                                newDiv.html(wordNodes[i].name).appendTo(suggest);
+                                newDiv.mouseover(function () {
+                                    //将原来的蓝色字段设为白色
+                                    if (highlightindex != -1) {
+                                        $("#suggest").children("div").eq(highlightindex).css("background-color", "white");
+                                    }
+                                    highlightindex = $(this).attr("id");
+                                    $(this).css("background-color", "#fdbd0f");
+                                });
+                                newDiv.mouseout(function () {
+                                    $(this).css("background-color", "white");
+                                });
+                                newDiv.click(function () {
+                                    $("#suggest").hide();
+                                    var textClick = $("#suggest").children("div").eq(highlightindex).text();
                                     highlightindex = -1;
-                                }
-
-                            },
-                            error:function(){
-                                alert("回调失败");
+                                    $("#search").val(textClick);
+                                });
                             }
-                        });
-                }else{//如果文本信息为空就隐藏
+                            //如果返回的wordNodes长度大于0就show
+                            if (wordNodes.length > 0) {
+                                suggest.show();
+                            } else {
+                                suggest.hide();
+                                highlightindex = -1;
+                            }
+
+                        },
+                        error: function () {
+                            alert("回调失败");
+                        }
+                    });
+                } else {//如果文本信息为空就隐藏
                     suggest.hide();
                     highlightindex = -1;
                 }
                 //键盘向上向下键
-            }else if(myKeyCode == 38 || myKeyCode ==40){
+            } else if (myKeyCode == 38 || myKeyCode == 40) {
                 //向上
-                if(myKeyCode == 38){
+                if (myKeyCode == 38) {
                     //获得ID为auto里面的所有DIV对象
                     var autoNodes = $("#suggest").children("div");
                     //如果没有被选中
-                    if(highlightindex != -1){
+                    if (highlightindex != -1) {
                         //把原来的蓝色字段，设为白色
-                        autoNodes.eq(highlightindex).css("background-color","white");
+                        autoNodes.eq(highlightindex).css("background-color", "white");
                         highlightindex--;
-                    }else{
+                    } else {
                         //如果是-1，则没有选中任何字段，此时按up键，选中最下面的字段
                         highlightindex = autoNodes.length - 1;
                     }
-                    autoNodes.eq(highlightindex).css("background-color","#fdbd0f");
+                    autoNodes.eq(highlightindex).css("background-color", "#fdbd0f");
                 }
                 //向下
-                if(myKeyCode == 40){
+                if (myKeyCode == 40) {
                     //找到id为 "auto" 的包含的所有 div 子元素：
                     var autoNodes = $("#suggest").children("div");
-                    if(highlightindex != -1){
+                    if (highlightindex != -1) {
                         //把原来的蓝色字段，设为白色
-                        autoNodes.eq(highlightindex).css("background-color","white");
+                        autoNodes.eq(highlightindex).css("background-color", "white");
                         highlightindex++;
-                    }else{
+                    } else {
                         highlightindex++;
                     }
-                    if(highlightindex == autoNodes.length){
+                    if (highlightindex == autoNodes.length) {
                         //如果到了最后一个元素，重新回到第一个
                         highlightindex = 0;
                     }
-                    autoNodes.eq(highlightindex).css("background-color","#fdbd0f");
+                    autoNodes.eq(highlightindex).css("background-color", "#fdbd0f");
                 }
 
                 //回车键
-            }else if(myKeyCode ==13){
-                if(highlightindex!=-1){
+            } else if (myKeyCode == 13) {
+                if (highlightindex != -1) {
                     //获得选中的那个的文本值
                     var textInputText = $("#suggest").children("div").eq(highlightindex).text();
                     highlightindex = -1;
                     $("#search").val(textInputText);
                     $("#suggest").hide();
 
-                }else{
+                } else {
                     $("#suggest").hide();
                     //失去焦点
                     $("#search").get(0).blur();

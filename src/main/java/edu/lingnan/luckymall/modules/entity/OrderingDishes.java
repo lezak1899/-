@@ -13,17 +13,17 @@ import java.io.Serializable;
 @Component
 public class OrderingDishes implements Serializable {
     private static final long serialVersionUID = -63492618235189081L;
-    
+
     private Integer id;
-    
+
     private Integer orderingId;
-    
+
     private Integer dishesId;
-    
+
     private String dishesName;
-    
+
     private Integer dishesCount;
-    
+
     private Object dishesPrice;
 
 

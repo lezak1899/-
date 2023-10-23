@@ -8,6 +8,6 @@ public class MessageConsumer {
 
     @JmsListener(destination = "UnitTest")
     public void receiveMessage(String message) {
-        System.out.println("消息消费：：："+message);
+        System.out.println("消息消费：：：" + message);
     }
 }

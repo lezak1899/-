@@ -36,8 +36,6 @@ public class StoreController {
     private EvaluationService evaluationService;
 
 
-
-
     @GetMapping("toStreet")
     public String toLogin(Model model) {
         List<Store> allStore = storeService.queryAll(null);
@@ -46,18 +44,18 @@ public class StoreController {
     }
 
     @GetMapping("enterStoreBystoreId")
-    public String enterStoreBystoreId(int storeId,Model model) {
+    public String enterStoreBystoreId(int storeId, Model model) {
 
         //店铺实体类，用于展示店铺信息
-        Store store=storeService.queryById(storeId);
+        Store store = storeService.queryById(storeId);
         model.addAttribute("store", store);
         //菜单列别
-        List<Dishes> dishes=dishesService.queryAllByStoreId(storeId);
+        List<Dishes> dishes = dishesService.queryAllByStoreId(storeId);
         model.addAttribute("dishes", dishes);
         //评价列表evaluationList
 
-        List<Evaluation> evaluationList =evaluationService.queryAllByStoreId(storeId);
-        model.addAttribute("evaluationList",evaluationList);
+        List<Evaluation> evaluationList = evaluationService.queryAllByStoreId(storeId);
+        model.addAttribute("evaluationList", evaluationList);
 
 
         //System.out.println(this.getClass().getName()+"::::123");
@@ -69,7 +67,7 @@ public class StoreController {
     public List<Store> suggestByStr(String str) {
 
 
-        if(str=="") return  null;
+        if (str == "") return null;
 
 
         List<Store> list = storeService.selectByNameLike(str);
@@ -80,12 +78,11 @@ public class StoreController {
     }
 
     @RequestMapping("/search")
-    public String search(String storeNameLike,Model model) {
+    public String search(String storeNameLike, Model model) {
         List<Store> list = storeService.selectByNameLike(storeNameLike);
         model.addAttribute("allStore", list);
         return "store_street";
     }
-
 
 
 }

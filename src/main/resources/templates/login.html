@@ -14,16 +14,15 @@
     <link th:href="@{/static/css/login.css}" rel="stylesheet">
 
 
-
-
-
 </head>
-<body class="layui-layout-body" >
+<body class="layui-layout-body">
 
 <!--······················导航栏···························-->
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo" style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0</div>
+        <div class="layui-logo"
+             style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0
+        </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
@@ -36,7 +35,6 @@
                 </dl>
             </li>
         </ul>
-
 
 
         <!--未登陆-->
@@ -54,7 +52,8 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}" class="layui-nav-img">
+                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}"
+                              class="layui-nav-img">
                         <span th:text="${session.loginBean.name}"></span>
                     </a>
                     <dl class="layui-nav-child">
@@ -76,7 +75,7 @@
             <form class="layui-form" th:action="@{/customer/loginByPhone}" method="post">
                 <h1 class="layui-input-block">欢迎登陆</h1>
                 <div class="layui-form-item">
-                    <input type="text" class="layui-input" name="phone"  ID="account" placeholder="请输入账号绑定的手机号">
+                    <input type="text" class="layui-input" name="phone" ID="account" placeholder="请输入账号绑定的手机号">
 
                 </div>
                 <div class="layui-form-item">
@@ -86,15 +85,18 @@
 
 
                 <div class="layui-form-item">
-                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo" onclick="SetPwbAndChk()">登录</button>
+                    <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo" onclick="SetPwbAndChk()">
+                        登录
+                    </button>
                 </div>
                 <div class="layui-form-item">
-                    <input type="checkbox" ID="chkRememberPwd" lay-skin="primary" title="记住密码" checked="true" style="float: left">
+                    <input type="checkbox" ID="chkRememberPwd" lay-skin="primary" title="记住密码" checked="true"
+                           style="float: left">
 
-                        <div class="layui-btn-group" style="float: right">
-                            <a th:href="@{/customer/toRegister}" class="layui-btn layui-btn-primary"  >注册</a>
-                            <button type="reset" class="layui-btn layui-btn-warm" >重置</button>
-                        </div>
+                    <div class="layui-btn-group" style="float: right">
+                        <a th:href="@{/customer/toRegister}" class="layui-btn layui-btn-primary">注册</a>
+                        <button type="reset" class="layui-btn layui-btn-warm">重置</button>
+                    </div>
 
                 </div>
 
@@ -104,14 +106,13 @@
 </div>
 
 
-
 <!-- JavaScript 放置在文档最后面可以使页面加载速度更快 -->
 <script th:src="@{/static/layui/layui.js}" charset="utf-8"></script>
 <script th:src="@{/static/js/jquery-3.4.1.min.js}" charset="utf-8"></script>
 
 <script type="text/javascript">
-    window.onload=function onLoginLoaded () {
-        if(checkCooike()){
+    window.onload = function onLoginLoaded() {
+        if (checkCooike()) {
             //获取Cookie
             var info = getCookie();
             var ca = info.split(",");
@@ -127,18 +128,20 @@
             }
         }
     };
+
     function Stuts() {
-        if(document.getElementById('chkRememberPwd').checked === true){
+        if (document.getElementById('chkRememberPwd').checked === true) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
     }
+
     function SetPwbAndChk() {
         //判断记住密码是否被勾选
         // var checkstatus = document.getElementById('chkRememberPwb');
-        if(Stuts() === true){
+        if (Stuts() === true) {
             //获取用户名
             var usr = document.getElementById('account').value;
             //获取密码
@@ -146,29 +149,31 @@
             //alert(pwb+"密码");     //测试密码
             var expdate = new Date();
             //设置Cookie过期时间为两周
-            expdate.setTime(expdate.getTime() + 14 * (24*60*60*1000));
-            var time =expdate.toUTCString();
+            expdate.setTime(expdate.getTime() + 14 * (24 * 60 * 60 * 1000));
+            var time = expdate.toUTCString();
             //写进Cookie
-            document.cookie = "account="+usr+","+"password"+"="+pwb+","+"expdate="+ time+";path=/";
-        }else{
+            document.cookie = "account=" + usr + "," + "password" + "=" + pwb + "," + "expdate=" + time + ";path=/";
+        } else {
             var expdate = new Date();
             expdate.setTime(0);
-            var time =expdate.toUTCString();
-            document.cookie = "account="+",password=,"+"expdate="+ time+";path=/";
+            var time = expdate.toUTCString();
+            document.cookie = "account=" + ",password=," + "expdate=" + time + ";path=/";
         }
     }
+
     //根据account取Cookie值
     function getCookie() {
         //读取Cookie
         var decodedCookie = decodeURIComponent(document.cookie);
         return decodedCookie;
     }
+
     //判断Cookie是否为空
     function checkCooike() {
         var info = getCookie();
-        if(info != ""){
+        if (info != "") {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -177,15 +182,15 @@
 <script>
 
 
-    layui.use(['form', 'layedit', 'laydate','element'], function(){
+    layui.use(['form', 'layedit', 'laydate', 'element'], function () {
         var form = layui.form
-            ,layer = layui.layer
-            ,layedit = layui.layedit
-            ,laydate = layui.laydate;
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
 
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
         //监听导航点击
-        element.on('nav(demo)', function(elem){
+        element.on('nav(demo)', function (elem) {
             //console.log(elem)
             layer.msg(elem.text());
         });
@@ -193,26 +198,25 @@
 </script>
 
 
-
 <script>
     //弹窗提示后端传过来的msg
-    var msg="[[${msg}]]";
+    var msg = "[[${msg}]]";
 
     //Demo
-    layui.use(['form','layer'], function(){
+    layui.use(['form', 'layer'], function () {
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
-        if(msg!=""){
+        if (msg != "") {
 
             layer.open({
                 type: 1
-                ,offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-                ,id: 'alertMsg' //防止重复弹出
-                ,content: '<div style="padding: 20px 100px;">'+ msg +'</div>'
-                ,btn: '关闭'
-                ,btnAlign: 'c' //按钮居中
-                ,shade: 0 //不显示遮罩
-                ,yes: function(){
+                , offset: 'auto' //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                , id: 'alertMsg' //防止重复弹出
+                , content: '<div style="padding: 20px 100px;">' + msg + '</div>'
+                , btn: '关闭'
+                , btnAlign: 'c' //按钮居中
+                , shade: 0 //不显示遮罩
+                , yes: function () {
                     layer.closeAll();
                 }
             });

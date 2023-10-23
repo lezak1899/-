@@ -14,33 +14,33 @@ import java.io.Serializable;
 @Component
 public class Evaluation implements Serializable {
     private static final long serialVersionUID = 847168913093645055L;
-    
+
     private Integer id;
-    
+
     private Integer anonymity;
-    
+
     private Integer customerId;
-    
+
     private String customerImage;
-    
+
     private String customerName;
-    
+
     private Integer orderingId;
-    
+
     private Integer storeId;
-    
+
     private Date date;
-    
+
     private Integer score;
-    
+
     private String evaluation;
-    
+
     private String image1;
-    
+
     private String image2;
-    
+
     private String image3;
-    
+
     private String image4;
 
 

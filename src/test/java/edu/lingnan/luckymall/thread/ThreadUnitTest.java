@@ -24,8 +24,8 @@ public class ThreadUnitTest {
      * 实际上，线程池是用来执行实现了Runnable接口的任务，而不是直接执行继承Thread类的线程类。因为线程池是基于任务的，
      * 它管理和复用线程，而不是直接创建和管理线程对象。
      */
-    class MyThread extends Thread{
-        public void run(){
+    class MyThread extends Thread {
+        public void run() {
             //编写自己的线程代码
             //Thread.currentThread表示当前代码段正在被哪个线程调用的相关信息
             System.out.println(Thread.currentThread().getName());
@@ -33,7 +33,7 @@ public class ThreadUnitTest {
     }
 
     @Test
-    public void UnitTest1(){
+    public void UnitTest1() {
         MyThread myThread = new MyThread();
         myThread.setName("我是线程1");
         myThread.start();
@@ -45,17 +45,17 @@ public class ThreadUnitTest {
      * 第二种：实现Runnable接口：
      */
     @Test
-    public void UnitTest2(){
+    public void UnitTest2() {
         Runnable myRunable1 = new Runnable() {
             @Override
             public void run() {
-                    System.out.println(Thread.currentThread().getName()+"->我是线程2");
+                System.out.println(Thread.currentThread().getName() + "->我是线程2");
             }
         };
 
         // 和 myRunable1的效果意义，只是用了Lambda表达式
         Runnable myRunable2 = (() -> {
-            System.out.println(Thread.currentThread().getName()+"->我是线程2");
+            System.out.println(Thread.currentThread().getName() + "->我是线程2");
         });
 
         threadPoolTaskExecutor.submit(myRunable2);
@@ -71,11 +71,11 @@ public class ThreadUnitTest {
     @Test
     public void UnitTest3() throws ExecutionException, InterruptedException {
 
-        Callable myCallable = (()->{
-            Integer sum=0;
-            for (int i=0;i<100;i++){
+        Callable myCallable = (() -> {
+            Integer sum = 0;
+            for (int i = 0; i < 100; i++) {
                 System.out.println(i);
-                sum+=i;
+                sum += i;
             }
             return sum;
         });

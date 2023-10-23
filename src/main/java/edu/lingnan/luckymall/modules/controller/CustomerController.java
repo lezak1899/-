@@ -43,7 +43,7 @@ public class CustomerController {
 
 
     @PostMapping("insert")
-    public Customer insert(Customer customer){
+    public Customer insert(Customer customer) {
 
         return customerService.insert(customer);
     }
@@ -58,9 +58,9 @@ public class CustomerController {
 
     @GetMapping("toHome")
     public String toHome() {
+        System.out.println("已经进来！！");
         return "home";
     }
-
 
 
     @GetMapping("toLogin")
@@ -74,48 +74,35 @@ public class CustomerController {
     }
 
     @PostMapping("loginByPhone")
-    public String loginByPhone(String phone,String password, Model model, HttpSession session,HttpServletRequest request) {
-
-
-
+    public String loginByPhone(String phone, String password, Model model, HttpSession session, HttpServletRequest request) {
 
         Customer loginBean = customerService.loginByPhone(phone, password);
-
-        if(loginBean==null){
+        if (loginBean == null) {
             model.addAttribute("msg", "用户名或密码错误");
-
             return "login";
-
         }
-
         //获得系统当前时间,赋值给loginBean
-        Date date =new Date();
+        Date date = new Date();
         loginBean.setLastLoginDate(date);
-
         customerService.update(loginBean);
-
         session.setAttribute("loginBean", loginBean);
         return "home";
-
-
-
-
-        }
+    }
 
 
     @PostMapping("register")
-    public String register(Customer bean,  String cfmpassword, Model model,
-                           String quiz1, String quiz2, String quiz3, String desc){
+    public String register(Customer bean, String cfmpassword, Model model,
+                           String quiz1, String quiz2, String quiz3, String desc) {
 
         //判断两次密码是否一致
-        if(bean.getName().length()<2||bean.getPassword().length()>6) {
+        if (bean.getName().length() < 2 || bean.getPassword().length() > 6) {
             model.addAttribute("msg", " 用户名长度不符合要求，请重新输入！");
             //System.out.println("两次输入密码不一致");
             return "register";
         }
 
         //判断两次密码是否一致
-        if(bean.getPassword().length()<6||bean.getPassword().length()>11) {
+        if (bean.getPassword().length() < 6 || bean.getPassword().length() > 11) {
             model.addAttribute("msg", " 密码长度不符合要求，请重新输入！");
             //System.out.println("两次输入密码不一致");
             return "register";
@@ -123,29 +110,29 @@ public class CustomerController {
 
 
         //判断两次密码是否一致
-        if(!bean.getPassword().equals(cfmpassword)) {
+        if (!bean.getPassword().equals(cfmpassword)) {
             model.addAttribute("msg", "两次输入密码不一致！");
             //System.out.println("两次输入密码不一致");
             return "register";
         }
 
         //校验地址
-        if(bean.getPhone().length()!=11){
+        if (bean.getPhone().length() != 11) {
             model.addAttribute("msg", "手机号码格式错误!");
 
-            System.out.println("手机号码格式错误!:::"+bean.getPhone().length()+":::"+bean.getPhone());
+            System.out.println("手机号码格式错误!:::" + bean.getPhone().length() + ":::" + bean.getPhone());
             return "register";
         }
 
 
         //校验地址
-        if(quiz1==null&&quiz2==null&&quiz3==null&&desc==null){
+        if (quiz1 == null && quiz2 == null && quiz3 == null && desc == null) {
             model.addAttribute("msg", "地址格式不正确!");
             //System.out.println("地址格式不正确");
             return "register";
         }
 
-        String address=quiz1+quiz2+quiz3+desc;
+        String address = quiz1 + quiz2 + quiz3 + desc;
 
 
         //System.out.println(customerService.getByName(bean.getName()));
@@ -164,7 +151,7 @@ public class CustomerController {
         }
 
         //获得系统当前时间,赋值给bean
-        Date date =new Date();
+        Date date = new Date();
         bean.setRegDate(date);
 
         //赋值地址
@@ -177,7 +164,7 @@ public class CustomerController {
 
         Customer result = customerService.insert(bean);
 
-        if (result!=null) {
+        if (result != null) {
             model.addAttribute("msg", "注册成功请登陆!");
             //System.out.println("注册成功请登陆");
             return "login";
@@ -190,13 +177,13 @@ public class CustomerController {
     }
 
     @GetMapping("logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.invalidate();
         return "home";
     }
 
     @GetMapping("toCustomerInfo")
-    public String toCustomerInfo(){
+    public String toCustomerInfo() {
         return "pages/customer_info";
     }
 
@@ -205,11 +192,10 @@ public class CustomerController {
     public int upload(MultipartFile file, HttpServletRequest request, int id, HttpSession session) throws IOException {
 
 
-
         //设置图片上传路径,是目标文件夹的路径
 
 
-        String filePath="E:\\idea_workspace\\eattingwhat\\target\\classes\\static\\upload";//target文件的路径
+        String filePath = "E:\\idea_workspace\\luckymall\\target\\classes\\static\\upload";//target文件的路径
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
         //String filePath="/usr/local/static/upload";
 
@@ -226,21 +212,20 @@ public class CustomerController {
         String newFileName = UUID.randomUUID().toString().replaceAll("-", "") + suffix;
 
 
-
         // 封装上传文件位置的全路径
         File targetFile = new File(filePath, newFileName);
         file.transferTo(targetFile);
 
 
         // 保存到数据库
-        Customer  customer=customerService.queryById(id);
+        Customer customer = customerService.queryById(id);
         customer.setImage(newFileName);
 
         customerService.update(customer);
 
         session.setAttribute("loginBean", customer);
 
-        System.out.println(this.getClass().getName()+":::"+customer.getImage());
+        System.out.println(this.getClass().getName() + ":::" + customer.getImage());
 
         return 1;
 

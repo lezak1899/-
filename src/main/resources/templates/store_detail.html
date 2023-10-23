@@ -18,7 +18,9 @@
 <!--······················导航栏···························-->
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo" style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0</div>
+        <div class="layui-logo"
+             style="text-shadow: 3px 3px 2px #ffbf00;font-size: 25px;font-family:arial;color: #ff6600;">EatingWhat2.0
+        </div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a th:href="@{/customer/toHome}">HOME</a></li>
@@ -31,7 +33,6 @@
                 </dl>
             </li>
         </ul>
-
 
 
         <!--未登陆-->
@@ -49,7 +50,8 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
-                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}" class="layui-nav-img">
+                         <img th:src="@{/static/upload/{loginBeanImageName}(loginBeanImageName=${session.loginBean.image})}"
+                              class="layui-nav-img">
                         <span th:text="${session.loginBean.name}"></span>
                     </a>
                     <dl class="layui-nav-child">
@@ -64,16 +66,16 @@
 </div>
 <!--······················导航栏结束···························-->
 
-<div  style="width: 75%;margin:0px auto;" >
+<div style="width: 75%;margin:0px auto;">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
         <legend>[[${store.name}]]</legend>
     </fieldset>
     <div style="width: 960px;margin:0px auto;">
 
         <!--······················店面大图片···························-->
-        <div style="width: 960px;height: 280px;"><img height="100%" width="100%" th:src="@{/static/images/{storeFront}(storeFront=${store.storefront})}"></div>
-
-
+        <div style="width: 960px;height: 280px;"><img height="100%" width="100%"
+                                                      th:src="@{/static/images/{storeFront}(storeFront=${store.storefront})}">
+        </div>
 
 
         <!--······················选项卡···························-->
@@ -84,21 +86,24 @@
                 <li class="dishesEvaluation">店铺评价</li>
 
             </ul>
-            <div class="layui-tab-content"style="padding: 0px;background-color:#f7f7f7;">
+            <div class="layui-tab-content" style="padding: 0px;background-color:#f7f7f7;">
                 <!--······················菜单···························-->
-                <div class="layui-tab-item layui-show" style="min-height: 600px;" >
+                <div class="layui-tab-item layui-show" style="min-height: 600px;">
                     <div style="height: 100px;width: 700px;margin:0px auto;">
                         <p style="line-height: 80px;color: #db0007;font-size: 30px">[[${store.name}]]</p>
                         <hr style="border: 1px solid #dedede"/>
                     </div>
-                    <div  style="width: 700px;min-height:600px;margin:0 auto;">
+                    <div style="width: 700px;min-height:600px;margin:0 auto;">
                         <!--需要加这句才可以实现动画-->
                         <div class="site-doc-icon site-doc-anim">
 
 
                                 <span th:each="item: ${dishes}">
-                                    <div class="dishes layui-anim" data-anim="layui-anim-scale"  th:dishes_id="${item.id}" th:dishes_price="${item.price}" th:dishes_name="${item.name}">
-                                        <img  style="height: 120px;width: 120px;" th:src="@{/static/images/{itemImage}(itemImage=${item.image})}">
+                                    <div class="dishes layui-anim" data-anim="layui-anim-scale"
+                                         th:dishes_id="${item.id}" th:dishes_price="${item.price}"
+                                         th:dishes_name="${item.name}">
+                                        <img style="height: 120px;width: 120px;"
+                                             th:src="@{/static/images/{itemImage}(itemImage=${item.image})}">
                                         <p>[[${item.name}]]</p>
                                         <p style="color: #db0007;">￥:[[${item.price}]]</p>
                                     </div>
@@ -109,11 +114,9 @@
                     </div>
 
 
-
-
                 </div>
                 <!--······················店铺简介···························-->
-                <div class="layui-tab-item"style="min-height: 600px; ">
+                <div class="layui-tab-item" style="min-height: 600px; ">
                     <!--隔开-->
                     <div style="width: 100%;height: 20px;"></div>
 
@@ -121,13 +124,15 @@
                         <table style="width: 800px;margin: 0 auto">
                             <tr>
                                 <td colspan="4" style="text-align: center">
-                                    <img width="120px" height="120px" style="border-radius: 50%;overflow: hidden;" th:src="@{/static/images/{storeLogo}(storeLogo=${store.logo})}">
+                                    <img width="120px" height="120px" style="border-radius: 50%;overflow: hidden;"
+                                         th:src="@{/static/images/{storeLogo}(storeLogo=${store.logo})}">
                                 </td>
 
                             </tr>
                             <tr>
                                 <td colspan="4" height="120px">
-                                    <h3 style="line-height: 120px;font-size: 30px;font-weight: 900;">[[${store.name}]]</h3>
+                                    <h3 style="line-height: 120px;font-size: 30px;font-weight: 900;">
+                                        [[${store.name}]]</h3>
                                 </td>
                             </tr>
                             <tr>
@@ -137,7 +142,8 @@
                                 <td colspan="3" width="70%">
                                 </td>
                                 <td>
-                                    星级评分：<div id="star"></div>
+                                    星级评分：
+                                    <div id="star"></div>
                                 </td>
                             </tr>
                         </table>
@@ -153,15 +159,21 @@
                 <!--······················菜品评价···························-->
                 <div class="layui-tab-item" style="min-height: 600px;">
                     <br>
-                     <span th:each="item: ${evaluationList}">
+                    <span th:each="item: ${evaluationList}">
 
-                        <table bordercolor="#bfbfbf" style="border-collapse:collapse;border: 0px;width: 90%;margin:auto;">
+                        <table bordercolor="#bfbfbf"
+                               style="border-collapse:collapse;border: 0px;width: 90%;margin:auto;">
 
                                    <tr cel style="width: 100%;height: 75px">
                                             <td width="3%"></td>
                                             <td width="10%">
-                                                <span th:if=" ${item.anonymity} eq 1 "><img th:src="@{/static/upload/匿名头像.jpg}" height="50px" width="50px" style="margin: 2px;border-radius: 25px"></span>
-                                                <span th:if=" ${item.anonymity} eq 0 "><img th:src="@{/static/upload/{loginBeanImage}(loginBeanImage=${item.customerImage})}" height="50px" width="50px" style="margin: 2px;border-radius: 25px"></span>
+                                                <span th:if=" ${item.anonymity} eq 1 "><img
+                                                        th:src="@{/static/upload/匿名头像.jpg}" height="50px" width="50px"
+                                                        style="margin: 2px;border-radius: 25px"></span>
+                                                <span th:if=" ${item.anonymity} eq 0 "><img
+                                                        th:src="@{/static/upload/{loginBeanImage}(loginBeanImage=${item.customerImage})}"
+                                                        height="50px" width="50px"
+                                                        style="margin: 2px;border-radius: 25px"></span>
                                             </td>
                                             <td>
                                                 <table width="100%" height="100%">
@@ -193,21 +205,29 @@
                                                 [[${item.evaluation}]]
                                             </td>
                                         </tr>
-                                        <!--如果image1的数据不为空则加载放图片的位置，否则不加载-->
+                            <!--如果image1的数据不为空则加载放图片的位置，否则不加载-->
                                         <span th:if=" ${item.image1} ne '' ">
                                                     <tr>
                                                         <td width="3%"></td>
                                                         <td colspan="2" style="height: 120px">
-                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image1})}" height="100px" width="100px" style="margin: 2px;border-radius: 5px">
+                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image1})}"
+                                                                     height="100px" width="100px"
+                                                                     style="margin: 2px;border-radius: 5px">
 
                                                             <span th:if=" ${item.image2} ne '' ">
-                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image2})}" height="100px" width="100px" style="margin: 2px;border-radius: 5px">
+                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image2})}"
+                                                                     height="100px" width="100px"
+                                                                     style="margin: 2px;border-radius: 5px">
                                                             </span>
                                                             <span th:if=" ${item.image3} ne '' ">
-                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image3})}" height="100px" width="100px" style="margin: 2px;border-radius: 5px">
+                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image3})}"
+                                                                     height="100px" width="100px"
+                                                                     style="margin: 2px;border-radius: 5px">
                                                             </span>
                                                             <span th:if=" ${item.image4} ne '' ">
-                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image4})}" height="100px" width="100px" style="margin: 2px;border-radius: 5px">
+                                                                <img th:src="@{/static/upload/{image1}(image1=${item.image4})}"
+                                                                     height="100px" width="100px"
+                                                                     style="margin: 2px;border-radius: 5px">
                                                             </span>
                                                         </td>
                                                     </tr>
@@ -219,7 +239,8 @@
                                             </span>
 
                         </table>
-                        <div style="width: 90%;text-align: center;color: #6c6c6c;margin: auto;height: 10px"><hr width=100% size=1 color=#00ffff align=center noshade></div>
+                        <div style="width: 90%;text-align: center;color: #6c6c6c;margin: auto;height: 10px"><hr
+                                width=100% size=1 color=#00ffff align=center noshade></div>
                      </span>
                     <div style="text-align: center;color: #6c6c6c;">以上是全部评价</div>
 
@@ -232,7 +253,8 @@
 
 
 <!--······················底部的结算条···························-->
-<div class="buttom" style="width: 100%;margin:0px auto;background:rgba(0,0,0,0.5);height:50px;position:fixed;bottom:0px;">
+<div class="buttom"
+     style="width: 100%;margin:0px auto;background:rgba(0,0,0,0.5);height:50px;position:fixed;bottom:0px;">
     <div style="width:960px;height: 50px; line-height: 50px;margin: 0px auto">
         <div style="float: right;height: 50px;">
             <span id="price_sum" style="color:#fdbd0f;line-height: 50px; margin-right: 20px">总计：0元</span>
@@ -242,13 +264,14 @@
 </div>
 
 <!--······················弹出层···························-->
-<table id="comfirm_page" border="1" bordercolor="#bfbfbf" style="border-collapse:collapse;width: 500px;margin: 10px 0;display: none">
+<table id="comfirm_page" border="1" bordercolor="#bfbfbf"
+       style="border-collapse:collapse;width: 500px;margin: 10px 0;display: none">
 
     <tr style="width: 100%;height: 30px">
         <td colspan="3" style="text-align: center">
             总价
         </td>
-        <td class="confirm_page_sum" width="150px"style="text-align: center">
+        <td class="confirm_page_sum" width="150px" style="text-align: center">
             0 元
         </td>
         <td width="50px" style="text-align: center">
@@ -265,17 +288,17 @@
 <script>
 
     //菜品数组，最终提交到后台的JSON数组
-    var dishesArray=[];
+    var dishesArray = [];
     //弹出框
-    var comfirPage=$("#comfirm_page");
+    var comfirPage = $("#comfirm_page");
     //弹出框要添加的内容
-    var comfirPageContent="";
+    var comfirPageContent = "";
     //菜品总价
-    var price_sum=0;
+    var price_sum = 0;
 
 
     //加载layui模块
-    layui.use(['layer','element'], function(){ //独立版的layer无需执行这一句
+    layui.use(['layer', 'element'], function () { //独立版的layer无需执行这一句
         var element = layui.element;
         var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
         $('.confirm_ordering').click(popUpComfirmePage);
@@ -290,58 +313,57 @@
         $(document).on('click', '.removeButton', removeDishes);
         $(document).on('click', '.buttonSubtract', subtractOne);
         //$(document).on('click', '.buttonAdd', addOne);
-        $("table").on("click",".buttonAdd",addOne);
+        $("table").on("click", ".buttonAdd", addOne);
     });
 
     //隐藏底部的结算条
-    var hideButton=function () {
+    var hideButton = function () {
 
         $(".buttom").hide();
     }
     //显示底部的结算条
-    var showButton=function () {
+    var showButton = function () {
 
         $(".buttom").show();
     }
 
 
     //添加菜品
-    var addDishes=function () {
+    var addDishes = function () {
 
-        price_sum=0;
-        var isFirstClike=1;//被点击菜品是否是第一次被点击，如果是值为1，否则为0
-        var dishes_obj={};
-        var dishes_id=$(this).attr('dishes_id');
+        price_sum = 0;
+        var isFirstClike = 1;//被点击菜品是否是第一次被点击，如果是值为1，否则为0
+        var dishes_obj = {};
+        var dishes_id = $(this).attr('dishes_id');
 
-        dishes_obj['storeId']=[[${store.id}]];
-        dishes_obj['customerId']=[[${session.loginBean.id}]];
+        dishes_obj['storeId'] = [[${store.id}]];
+        dishes_obj['customerId'] = [[${session.loginBean.id}]];
 
 
-
-        dishes_obj['dishesPrice']=$(this).attr('dishes_price');
-        dishes_obj['dishesName']=$(this).attr('dishes_name');
-        dishes_obj['dishesId']=dishes_id;
-        dishes_obj['dishesNmb']=1;
+        dishes_obj['dishesPrice'] = $(this).attr('dishes_price');
+        dishes_obj['dishesName'] = $(this).attr('dishes_name');
+        dishes_obj['dishesId'] = dishes_id;
+        dishes_obj['dishesNmb'] = 1;
 
         //比较 被点击的当前菜品 是否已经加入到了dishesArray，如果是dishes_num+1,并修改isFirstClike，
-        for (var i=0;i<dishesArray.length;i++){
-            if (dishesArray[i].dishesId==dishes_id){
+        for (var i = 0; i < dishesArray.length; i++) {
+            if (dishesArray[i].dishesId == dishes_id) {
                 dishesArray[i]['dishesNmb'] += 1;
-                isFirstClike=0;
+                isFirstClike = 0;
                 break;
             }
         }
-        if (isFirstClike==1){
+        if (isFirstClike == 1) {
             dishesArray.push(dishes_obj);
         }
         //求总价格
-        for (var i=0;i<dishesArray.length;i++){
-            price_sum+= dishesArray[i]['dishesNmb']*dishesArray[i]['dishesPrice'];
+        for (var i = 0; i < dishesArray.length; i++) {
+            price_sum += dishesArray[i]['dishesNmb'] * dishesArray[i]['dishesPrice'];
         }
         //更新总价
-        $("#price_sum").html("总计："+price_sum+"元");
+        $("#price_sum").html("总计：" + price_sum + "元");
         //更新总价
-        $(".confirm_page_sum").html(price_sum+"元");
+        $(".confirm_page_sum").html(price_sum + "元");
 
     }
 
@@ -349,22 +371,22 @@
     //弹窗函数
     var popUpComfirmePage = function () {
         //给页面赋值
-        for (var i=0;i<dishesArray.length;i++){
-            comfirPageContent+="<tr class=\"item\" id ="+ dishesArray[i]['dishesId']+" style=\"width: 100%;height: 30px\">\n" +
+        for (var i = 0; i < dishesArray.length; i++) {
+            comfirPageContent += "<tr class=\"item\" id =" + dishesArray[i]['dishesId'] + " style=\"width: 100%;height: 30px\">\n" +
                 "        <td width=\"30px\" style=\"text-align: center\">\n" +
-                (i+1)+"\n" +
+                (i + 1) + "\n" +
                 "        </td>\n" +
                 "        <td  width=\"150px\"   style=\"text-align: center\">\n" +
-                dishesArray[i]['dishesName']+"\n" +
+                dishesArray[i]['dishesName'] + "\n" +
                 "        </td>\n" +
                 "        <td  width=\"150px\"  style=\"text-align: center\">\n" +
                 "            <button class=\"buttonSubtract\"><i class=\"layui-icon layui-icon-subtraction\"></i></button>\n" +
-                "            <span class=\"dishesNum\">"+dishesArray[i]['dishesNmb']+"</span>\n" +
+                "            <span class=\"dishesNum\">" + dishesArray[i]['dishesNmb'] + "</span>\n" +
                 "            <button class=\"buttonAdd\"><i class=\"layui-icon layui-icon-addition\"></i> </button>\n" +
                 "\n" +
                 "        </td>\n" +
                 "        <td  width=\"150px\"  style=\"text-align: center\">\n" +
-                dishesArray[i]['dishesPrice']+"元\n" +
+                dishesArray[i]['dishesPrice'] + "元\n" +
                 "        </td>\n" +
                 "        <td width=\"50px\" style=\"text-align: center\">\n" +
                 "           <div class=\"removeButton\">\n" +
@@ -378,22 +400,22 @@
         comfirPage.prepend(comfirPageContent);
         comfirPage.show();
         layer.open({
-            title:'确认订单',
+            title: '确认订单',
             type: 1,
-            offset:'300px',
+            offset: '300px',
             area: '530px',
             //maxHeight:'600px',
             shadeClose: true, //点击遮罩关闭
-            btn:['确认支付', '再看看'],
+            btn: ['确认支付', '再看看'],
             //点击提交数据
             btn1: submit,
-            btn2: function(){
+            btn2: function () {
                 //如果你想关闭最新弹出的层，直接获取layer.index即可
                 layer.close(layer.index);
             },
             //弹窗被关闭时会调用
-            end: function(){
-                comfirPageContent="";
+            end: function () {
+                comfirPageContent = "";
                 $("tr").remove(".item");
                 comfirPage.hide();
             },
@@ -404,22 +426,22 @@
     }
 
     //提交已选菜品到后台
-    var submit=function () {
+    var submit = function () {
         //重置数组
 
         $.ajax({
             headers: {
                 'Content-Type': 'application/json'
             },
-            url:"/ordering/submitOrdering",
-            type:"post",
+            url: "/ordering/submitOrdering",
+            type: "post",
             data:
                 JSON.stringify(dishesArray),
-            success:function(data){
+            success: function (data) {
 
                 $(location).attr('href', '/ordering/toOrderingCheck');
             },
-            error:function(){
+            error: function () {
             }
         });
 
@@ -427,7 +449,7 @@
 
     //清空菜品蓝
     var emptyDishesBasket = function () {
-        dishesArray=[];
+        dishesArray = [];
         //移除<tr>标签中的 class=item 的元素
         $("tr").remove(".item");
         $("#price_sum").html("总计：0元");
@@ -441,26 +463,26 @@
 
         var buttonDishesId = $(this).parent().parent().attr("id");
 
-        for (var i=0;i<dishesArray.length;i++){
-            if(buttonDishesId==dishesArray[i]["dishesId"]){
+        for (var i = 0; i < dishesArray.length; i++) {
+            if (buttonDishesId == dishesArray[i]["dishesId"]) {
                 delete dishesArray[i];
                 //delete 只能将值去掉，但仍然占空间，下标为i开始，删除长度为1
-                dishesArray.splice(i,1);
+                dishesArray.splice(i, 1);
                 break;
             }
         }
-        $("tr").remove("#"+buttonDishesId);
+        $("tr").remove("#" + buttonDishesId);
 
 
         //求总价格
-        price_sum=0;
-        for (var i=0;i<dishesArray.length;i++){
-            price_sum+= dishesArray[i]['dishesNmb']*dishesArray[i]['dishesPrice'];
+        price_sum = 0;
+        for (var i = 0; i < dishesArray.length; i++) {
+            price_sum += dishesArray[i]['dishesNmb'] * dishesArray[i]['dishesPrice'];
         }
         //更新总价
-        $("#price_sum").html("总计："+price_sum+"元");
+        $("#price_sum").html("总计：" + price_sum + "元");
         //更新总价
-        $(".confirm_page_sum").html(price_sum+"元");
+        $(".confirm_page_sum").html(price_sum + "元");
 
 
     }
@@ -469,37 +491,37 @@
         var buttonDishesId = $(this).parent().parent().attr("id");
 
 
-        for (var i=0;i<dishesArray.length;i++){
-            if(buttonDishesId==dishesArray[i]["dishesId"]){
-                dishesArray[i]["dishesNmb"]+=1;
+        for (var i = 0; i < dishesArray.length; i++) {
+            if (buttonDishesId == dishesArray[i]["dishesId"]) {
+                dishesArray[i]["dishesNmb"] += 1;
                 $(this).siblings(".dishesNum").html(dishesArray[i]["dishesNmb"]);
                 break;
             }
         }
 
         //求总价格
-        price_sum=0;
-        for (var i=0;i<dishesArray.length;i++){
-            price_sum+= dishesArray[i]['dishesNmb']*dishesArray[i]['dishesPrice'];
+        price_sum = 0;
+        for (var i = 0; i < dishesArray.length; i++) {
+            price_sum += dishesArray[i]['dishesNmb'] * dishesArray[i]['dishesPrice'];
         }
         //更新总价
-        $("#price_sum").html("总计："+price_sum+"元");
+        $("#price_sum").html("总计：" + price_sum + "元");
         //更新总价
-        $(".confirm_page_sum").html(price_sum+"元");
+        $(".confirm_page_sum").html(price_sum + "元");
 
     }
     // 菜品数量减1
     var subtractOne = function () {
         var buttonDishesId = $(this).parent().parent().attr("id");
 
-        for (var i=0;i<dishesArray.length;i++){
-            if(buttonDishesId==dishesArray[i]["dishesId"]){
-                if(dishesArray[i]["dishesNmb"]==1){
-                    dishesArray.splice(i,1);
-                    $("tr").remove("#"+buttonDishesId);
+        for (var i = 0; i < dishesArray.length; i++) {
+            if (buttonDishesId == dishesArray[i]["dishesId"]) {
+                if (dishesArray[i]["dishesNmb"] == 1) {
+                    dishesArray.splice(i, 1);
+                    $("tr").remove("#" + buttonDishesId);
                     break;
-                }else{
-                    dishesArray[i]["dishesNmb"]-=1;
+                } else {
+                    dishesArray[i]["dishesNmb"] -= 1;
                     //siblings() 方法返回被选元素的所有同级元素。即更新弹出框中单个菜品的数量
                     $(this).siblings(".dishesNum").html(dishesArray[i]["dishesNmb"]);
                     break;
@@ -508,14 +530,14 @@
         }
 
         //求总价格
-        price_sum=0;
-        for (var i=0;i<dishesArray.length;i++){
-            price_sum+= dishesArray[i]['dishesNmb']*dishesArray[i]['dishesPrice'];
+        price_sum = 0;
+        for (var i = 0; i < dishesArray.length; i++) {
+            price_sum += dishesArray[i]['dishesNmb'] * dishesArray[i]['dishesPrice'];
         }
         //更新总价
-        $("#price_sum").html("总计："+price_sum+"元");
+        $("#price_sum").html("总计：" + price_sum + "元");
         //更新总价
-        $(".confirm_page_sum").html(price_sum+"元");
+        $(".confirm_page_sum").html(price_sum + "元");
 
     }
 
@@ -524,33 +546,33 @@
 
 <!--选项卡-->
 <script>
-    layui.use('element', function(){
+    layui.use('element', function () {
         var $ = layui.jquery
-            ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
 
         //触发事件
         var active = {
-            tabAdd: function(){
+            tabAdd: function () {
                 //新增一个Tab项
                 element.tabAdd('demo', {
-                    title: '新选项'+ (Math.random()*1000|0) //用于演示
-                    ,content: '内容'+ (Math.random()*1000|0)
-                    ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+                    title: '新选项' + (Math.random() * 1000 | 0) //用于演示
+                    , content: '内容' + (Math.random() * 1000 | 0)
+                    , id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
                 })
             }
-            ,tabDelete: function(othis){
+            , tabDelete: function (othis) {
                 //删除指定Tab项
                 element.tabDelete('demo', '44'); //删除：“商品管理”
 
                 othis.addClass('layui-btn-disabled');
             }
-            ,tabChange: function(){
+            , tabChange: function () {
                 //切换到指定Tab项
                 element.tabChange('demo', '22'); //切换到：用户管理
             }
         };
 
-        $('.site-demo-active').on('click', function(){
+        $('.site-demo-active').on('click', function () {
             var othis = $(this), type = othis.data('type');
             active[type] ? active[type].call(this, othis) : '';
         });
@@ -559,24 +581,24 @@
         var layid = location.hash.replace(/^#test=/, '');
         element.tabChange('test', layid);
 
-        element.on('tab(test)', function(elem){
-            location.hash = 'test='+ $(this).attr('lay-id');
+        element.on('tab(test)', function (elem) {
+            location.hash = 'test=' + $(this).attr('lay-id');
         });
 
     });
 </script>
 
 <script>
-    layui.use(['rate'], function(){
+    layui.use(['rate'], function () {
         var rate = layui.rate;
 
 
         //半星效果
         rate.render({
             elem: '#star'
-            ,value: [[${store.storeMark}]]//初始值
-            ,half: true //开启半星
-            ,readonly: true
+            , value: [[${store.storeMark}]]//初始值
+            , half: true //开启半星
+            , readonly: true
         })
     });
 </script>
@@ -586,20 +608,20 @@
         var $ = layui.jquery;
         //演示动画开始
         //可以在这里修改触发动画的事件
-        $('.site-doc-icon .layui-anim').click(function(){
+        $('.site-doc-icon .layui-anim').click(function () {
             var othis = $(this), anim = othis.data('anim');
 
             //停止循环
-            if(othis.hasClass('layui-anim-loop')){
+            if (othis.hasClass('layui-anim-loop')) {
                 return othis.removeClass(anim);
             }
             othis.removeClass(anim);
-            setTimeout(function(){
+            setTimeout(function () {
                 othis.addClass(anim);
             });
             //恢复渐隐
-            if(anim === 'layui-anim-fadeout'){
-                setTimeout(function(){
+            if (anim === 'layui-anim-fadeout') {
+                setTimeout(function () {
                     othis.removeClass(anim);
                 }, 1300);
             }
@@ -607,10 +629,6 @@
         //演示动画结束
     })
 </script>
-
-
-
-
 
 
 </body>

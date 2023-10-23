@@ -14,23 +14,23 @@ import java.io.Serializable;
 @Component
 public class Ordering implements Serializable {
     private static final long serialVersionUID = -34336614131809247L;
-    
+
     private Integer id;
-    
+
     private Integer userId;
-    
+
     private Integer delivererId;
-    
+
     private Integer storeId;
-    
+
     private Date startTime;
-    
+
     private String address;
-    
+
     private Integer orderingState;
-    
+
     private Date endTime;
-    
+
     private Object priceSum;
 
 

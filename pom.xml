@@ -21,9 +21,9 @@
     </parent>
 
     <groupId>edu.lingnan</groupId>
-    <artifactId>eattingwhat</artifactId>
+    <artifactId>luckymall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eattingwhat</name>
+    <name>luckymall</name>
     <!--  项目的打包的方式 war,jar,pom, 缺省默认值为jar  -->
     <packaging>jar</packaging>
 

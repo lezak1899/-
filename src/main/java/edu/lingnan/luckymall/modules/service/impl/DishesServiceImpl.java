@@ -34,7 +34,7 @@ public class DishesServiceImpl implements DishesService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
@@ -80,7 +80,7 @@ public class DishesServiceImpl implements DishesService {
     @Override
     public List<Dishes> queryAllByStoreId(int storeId) {
 
-        Dishes dishes =new Dishes();
+        Dishes dishes = new Dishes();
         dishes.setStoreId(storeId);
 
         return dishesDao.queryAll(dishes);
@@ -88,7 +88,7 @@ public class DishesServiceImpl implements DishesService {
 
     @Override
     public List<Dishes> queryAllByOrderingId(int orderingId) {
-        Dishes dishes =new Dishes();
+        Dishes dishes = new Dishes();
         dishes.setStoreId(orderingId);
         return dishesDao.queryAll(dishes);
     }

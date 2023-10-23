@@ -41,7 +41,7 @@ public class OrderingDishesServiceImpl implements OrderingDishesService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
@@ -86,21 +86,21 @@ public class OrderingDishesServiceImpl implements OrderingDishesService {
 
     @Override
     public List<OrderingDishes> queryAllByOrderingId(int orderingId) {
-        OrderingDishes orderingDishes =new OrderingDishes();
+        OrderingDishes orderingDishes = new OrderingDishes();
         orderingDishes.setOrderingId(orderingId);
         return orderingDishesDao.queryAll(orderingDishes);
     }
 
 
     @Override
-    public OrderingDishes newTestInstance(){
-        OrderingDishes orderingDishes =new OrderingDishes();
+    public OrderingDishes newTestInstance() {
+        OrderingDishes orderingDishes = new OrderingDishes();
         orderingDishes.setDishesCount(111);
         orderingDishes.setDishesName("Test");
         return orderingDishes;
     }
 
-    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public void insertIntoOrderingDishes() throws Exception {
         this.orderingDishesService.insert(this.orderingDishesService.newTestInstance());

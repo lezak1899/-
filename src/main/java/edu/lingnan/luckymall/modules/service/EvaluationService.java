@@ -1,6 +1,7 @@
 package edu.lingnan.luckymall.modules.service;
 
 import edu.lingnan.luckymall.modules.entity.Evaluation;
+
 import java.util.List;
 
 /**
@@ -23,7 +24,7 @@ public interface EvaluationService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     List<Evaluation> queryAllByLimit(int offset, int limit);
@@ -55,10 +56,6 @@ public interface EvaluationService {
     List<Evaluation> queryAllByCustomerId(int customerId);
 
     List<Evaluation> queryAllByStoreId(int storeId);
-
-
-
-
 
 
 }

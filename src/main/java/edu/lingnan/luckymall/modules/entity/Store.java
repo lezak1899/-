@@ -14,33 +14,33 @@ import java.io.Serializable;
 @Component
 public class Store implements Serializable {
     private static final long serialVersionUID = -71229505851378594L;
-    
+
     private Integer id;
-    
+
     private String name;
-    
+
     private String password;
-    
+
     private String phone;
-    
+
     private String address;
-    
+
     private Date regDate;
-    
+
     private Date lastLoginDate;
-    
+
     private Integer ssuper;
-    
+
     private Integer monthlySales;
-    
+
     private Object storeMark;
-    
+
     private Integer storeState;
-    
+
     private String describle;
-    
+
     private String logo;
-    
+
     private String storefront;
 
 

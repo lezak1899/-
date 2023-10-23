@@ -21,25 +21,36 @@
 
     <!--查询单个-->
     <select id="queryById" resultMap="EvaluationMap">
-        select
-          id, anonymity, customer_id, customer_image, customer_name, ordering_id, store_id, date, score, evaluation, image1, image2, image3, image4
-        from eattingwhat.evaluation
+        select id,
+               anonymity,
+               customer_id,
+               customer_image,
+               customer_name,
+               ordering_id,
+               store_id, date, score, evaluation, image1, image2, image3, image4
+        from luckymall.evaluation
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="EvaluationMap">
-        select
-          id, anonymity, customer_id, customer_image, customer_name, ordering_id, store_id, date, score, evaluation, image1, image2, image3, image4
-        from eattingwhat.evaluation
-        limit #{offset}, #{limit}
+        select id,
+               anonymity,
+               customer_id,
+               customer_image,
+               customer_name,
+               ordering_id,
+               store_id, date, score, evaluation, image1, image2, image3, image4
+        from luckymall.evaluation
+            limit #{offset}, #{limit}
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="EvaluationMap">
         select
-          id, anonymity, customer_id, customer_image, customer_name, ordering_id, store_id, date, score, evaluation, image1, image2, image3, image4
-        from eattingwhat.evaluation
+        id, anonymity, customer_id, customer_image, customer_name, ordering_id, store_id, date, score, evaluation,
+        image1, image2, image3, image4
+        from luckymall.evaluation
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -89,13 +100,15 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into eattingwhat.evaluation(anonymity, customer_id, customer_image, customer_name, ordering_id, store_id, date, score, evaluation, image1, image2, image3, image4)
-        values (#{anonymity}, #{customerId}, #{customerImage}, #{customerName}, #{orderingId}, #{storeId}, #{date}, #{score}, #{evaluation}, #{image1}, #{image2}, #{image3}, #{image4})
+        insert into luckymall.evaluation(anonymity, customer_id, customer_image, customer_name, ordering_id, store_id,
+                                         date, score, evaluation, image1, image2, image3, image4)
+        values (#{anonymity}, #{customerId}, #{customerImage}, #{customerName}, #{orderingId}, #{storeId}, #{date},
+                #{score}, #{evaluation}, #{image1}, #{image2}, #{image3}, #{image4})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update eattingwhat.evaluation
+        update luckymall.evaluation
         <set>
             <if test="anonymity != null">
                 anonymity = #{anonymity},
@@ -142,7 +155,9 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from eattingwhat.evaluation where id = #{id}
+        delete
+        from luckymall.evaluation
+        where id = #{id}
     </delete>
 
 </mapper>

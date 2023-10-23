@@ -14,19 +14,19 @@ import java.io.Serializable;
 @Component
 public class Dishes implements Serializable {
     private static final long serialVersionUID = 131252841058977486L;
-    
+
     private Integer id;
     /**
-    * 商店id
-    */
+     * 商店id
+     */
     private Integer storeId;
-    
+
     private String name;
-    
+
     private Object price;
-    
+
     private String describle;
-    
+
     private String image;
 
 

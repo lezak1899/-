@@ -35,7 +35,7 @@ public class EvaluationServiceImpl implements EvaluationService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
@@ -80,17 +80,17 @@ public class EvaluationServiceImpl implements EvaluationService {
 
     @Override
     public List<Evaluation> queryAllByCustomerId(int customerId) {
-        Evaluation evaluation=new Evaluation();
+        Evaluation evaluation = new Evaluation();
         evaluation.setCustomerId(customerId);
-        List<Evaluation> evaluationList =evaluationDao.queryAll(evaluation);
+        List<Evaluation> evaluationList = evaluationDao.queryAll(evaluation);
         return evaluationList;
     }
 
     @Override
     public List<Evaluation> queryAllByStoreId(int storeId) {
-        Evaluation evaluation=new Evaluation();
+        Evaluation evaluation = new Evaluation();
         evaluation.setStoreId(storeId);
-        List<Evaluation> evaluationList =evaluationDao.queryAll(evaluation);
+        List<Evaluation> evaluationList = evaluationDao.queryAll(evaluation);
         return evaluationList;
     }
 }

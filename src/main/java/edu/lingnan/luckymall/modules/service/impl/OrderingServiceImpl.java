@@ -44,7 +44,7 @@ public class OrderingServiceImpl implements OrderingService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
@@ -89,20 +89,20 @@ public class OrderingServiceImpl implements OrderingService {
 
     @Override
     public List<Ordering> queryAllByCustomerId(int customerId) {
-        Ordering ordering=new Ordering();
+        Ordering ordering = new Ordering();
         ordering.setUserId(customerId);
         return orderingDao.queryAllByDesc(ordering);
     }
 
     @Override
-    public Ordering newTestInstance(){
-        Ordering ordering =new Ordering();
+    public Ordering newTestInstance() {
+        Ordering ordering = new Ordering();
         ordering.setOrderingState(1);
         ordering.setStoreId(40170001);
         return ordering;
     }
 
-    @Transactional(propagation= Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void insertIntoOrdering() throws Exception {
         this.orderingService.insert(this.orderingService.newTestInstance());

@@ -63,7 +63,6 @@ public class DishesJson {
     }
 
 
-
     public String getDishesPrice() {
         return dishesPrice;
     }

@@ -21,6 +21,7 @@ public class RedisConfig {
 
     /**
      * 用于连接 redis服务
+     *
      * @return
      */
     @Bean
@@ -31,6 +32,7 @@ public class RedisConfig {
 
     /**
      * 注册 redisTemplate 到 spring容器
+     *
      * @param redisConnectionFactory
      * @return
      */

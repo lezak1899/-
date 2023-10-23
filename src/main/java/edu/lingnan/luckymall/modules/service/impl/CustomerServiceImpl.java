@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
      * 查询多条数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
@@ -79,15 +79,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer loginByPhone(String phone, String password) {
-        return customerDao.loginByPhone(phone,password);
+        return customerDao.loginByPhone(phone, password);
     }
 
     @Override
     public Customer getByName(String customerName) {
         Customer customer = new Customer();
         customer.setName(customerName);
-        List<Customer> list=customerDao.queryAll(customer);
-        if(list.size()==0)
+        List<Customer> list = customerDao.queryAll(customer);
+        if (list.size() == 0)
             return null;
         else
             return list.get(0);
@@ -98,8 +98,8 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getByPhone(String customerPhone) {
         Customer customer = new Customer();
         customer.setPhone(customerPhone);
-        List<Customer> list=customerDao.queryAll(customer);
-        if(list.size()==0)
+        List<Customer> list = customerDao.queryAll(customer);
+        if (list.size() == 0)
             return null;
         else
             return list.get(0);

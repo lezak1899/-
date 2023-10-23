@@ -1,12 +1,12 @@
 
-.store{
+.store {
     display: flex;
     height: 100%;
     width: 778px;
     background-color: #fdbd0f;
 }
 
-.left{
+.left {
     height: 100px;
     width: 100px;
 
@@ -16,24 +16,24 @@
 
 }
 
-.middle{
+.middle {
     height: 100px;
 
     flex: 1;
     line-height: 33px;
 
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
 
 }
 
 
-.right{
+.right {
     height: 100px;
     width: 100px;
 
-    color:red;
+    color: red;
     font-weight: bold;
     text-align: center;
     line-height: 100px;
@@ -42,20 +42,22 @@
 }
 
 
-.t1{
+.t1 {
 
     font-size: 18px;
     font-weight: bold;
 }
-.t2{
+
+.t2 {
 
     font-size: 14px;
     color: white;
 }
-.t3{
+
+.t3 {
 
     overflow: hidden;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
 
 }

@@ -1,7 +1,6 @@
 package edu.lingnan.luckymall.modules.vo;
 
 
-
 import edu.lingnan.luckymall.modules.entity.Ordering;
 
 import java.io.Serializable;

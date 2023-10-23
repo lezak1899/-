@@ -16,8 +16,8 @@ public class RedisUnitTest {
     private RedisService redisService;
 
     @Test
-    public void redisTest(){
-        this.redisService.setValue("lezak_name","lezak");
+    public void redisTest() {
+        this.redisService.setValue("lezak_name", "lezak");
         System.out.println(this.redisService.getValue("money"));
     }
 

@@ -44,30 +44,28 @@ public class EvaluationController {
     private StoreService storeService;
 
     @GetMapping("toEvaluationCheck")
-    public String toEvaluationCheck(HttpSession session,Model model) {
+    public String toEvaluationCheck(HttpSession session, Model model) {
 
         Customer loginBean = (Customer) session.getAttribute("loginBean");
-        List<Evaluation> evaluationList= evaluationService.queryAllByCustomerId(loginBean.getId());
+        List<Evaluation> evaluationList = evaluationService.queryAllByCustomerId(loginBean.getId());
 
 
-        model.addAttribute("evaluationList",evaluationList);
+        model.addAttribute("evaluationList", evaluationList);
 
 
         return "pages/evaluation_check";
     }
 
 
-
-
     @GetMapping("toEvaluateOrdering")
-    public String toEvaluateOrdering(Model model,int orderingId) {
+    public String toEvaluateOrdering(Model model, int orderingId) {
 
         Ordering ordering = orderingService.queryById(orderingId);
         Store store = storeService.queryById(ordering.getStoreId());
 
-        model.addAttribute("ordering",ordering);
+        model.addAttribute("ordering", ordering);
 
-        model.addAttribute("store",store);
+        model.addAttribute("store", store);
 
 
         return "pages/ordering_evaluateOrdering";
@@ -80,9 +78,9 @@ public class EvaluationController {
 
 
         //设置图片上传路径,是目标文件夹的路径
-        //String filePath = "E:\\idea_workspace\\eattingwhat\\target\\classes\\static\\upload";
+        //String filePath = "E:\\idea_workspace\\luckymall\\target\\classes\\static\\upload";
         //String filePath = request.getSession().getServletContext().getRealPath("/static/upload");
-        String filePath="/usr/local/static/upload";
+        String filePath = "/usr/local/static/upload";
 
 
         // 获取原始图片的扩展名
@@ -100,10 +98,10 @@ public class EvaluationController {
         File targetFile = new File(filePath, newFileName);
         file.transferTo(targetFile);
 
-        Map<String,String> map=new HashMap<>();
-        map.put("image",newFileName);
+        Map<String, String> map = new HashMap<>();
+        map.put("image", newFileName);
 
-        String data= JSON.toJSONString(map);
+        String data = JSON.toJSONString(map);
 
         return data;
     }
@@ -112,13 +110,12 @@ public class EvaluationController {
     @RequestMapping("/submitEvaluation2")
     public String submitEvaluation2(@RequestBody Evaluation evaluation, HttpSession session) {
 
-        if(evaluation.getEvaluation().length()<5){
+        if (evaluation.getEvaluation().length() < 5) {
             return "评价不能小于5个字哦！";
         }
 
 
-
-        Customer loginBean=(Customer) session.getAttribute("loginBean");
+        Customer loginBean = (Customer) session.getAttribute("loginBean");
         Date date = new Date();
 
         evaluation.setCustomerId(loginBean.getId());
@@ -127,9 +124,9 @@ public class EvaluationController {
         evaluation.setDate(date);
 
 
-        Customer customer=(Customer)session.getAttribute("loginBean");
+        Customer customer = (Customer) session.getAttribute("loginBean");
 
-        Ordering ordering= orderingService.queryById(evaluation.getOrderingId());
+        Ordering ordering = orderingService.queryById(evaluation.getOrderingId());
         ordering.setOrderingState(3);
         orderingService.update(ordering);
         evaluationService.insert(evaluation);

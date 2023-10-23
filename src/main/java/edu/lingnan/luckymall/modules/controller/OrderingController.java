@@ -63,35 +63,36 @@ public class OrderingController {
 
 
     @PostMapping("submitOrdering")
-    public String submitOrdering(@RequestBody List<DishesJson> jsonArray){
+    public String submitOrdering(@RequestBody List<DishesJson> jsonArray) {
 
         /**
          * 以下为插入order表
          */
         //只需要获取一次的值
-        int storeId=Integer.parseInt(jsonArray.get(0).getStoreId());
-        int customerId=Integer.parseInt(jsonArray.get(0).getCustomerId());
-        int dishesId=Integer.parseInt(jsonArray.get(0).getDishesId());;
+        int storeId = Integer.parseInt(jsonArray.get(0).getStoreId());
+        int customerId = Integer.parseInt(jsonArray.get(0).getCustomerId());
+        int dishesId = Integer.parseInt(jsonArray.get(0).getDishesId());
+        ;
 
         //获取当前时间
-        Date date =new Date();
+        Date date = new Date();
 
-        Customer customer=customerService.queryById(customerId);
+        Customer customer = customerService.queryById(customerId);
         //Customer customer=customerService.getById(customerId);
 
         //需要进入jsonArray获取每一个值 的值
         int dishesNum;
         double dishesPrice;
-        double priceSum=0;
+        double priceSum = 0;
 
-        System.out.println(this.getClass().getName()+":::"+ jsonArray);
-        for (DishesJson item:jsonArray
+        System.out.println(this.getClass().getName() + ":::" + jsonArray);
+        for (DishesJson item : jsonArray
         ) {
 
             //获取 ordering（订单信息表）的总价格
-            dishesPrice=Double.parseDouble(item.getDishesPrice());
-            dishesNum=Integer.parseInt(item.getDishesNmb());
-            priceSum += (dishesPrice*dishesNum);
+            dishesPrice = Double.parseDouble(item.getDishesPrice());
+            dishesNum = Integer.parseInt(item.getDishesNmb());
+            priceSum += (dishesPrice * dishesNum);
 
         }
         //给ordering（订单信息表）赋值
@@ -116,7 +117,7 @@ public class OrderingController {
         /**
          * 以下为插入 order_dishes 表,需要循环插入
          */
-        for (DishesJson item:jsonArray
+        for (DishesJson item : jsonArray
         ) {
             orderingDishes.setId(null);
             orderingDishes.setOrderingId(orderingId);
@@ -134,24 +135,23 @@ public class OrderingController {
     }
 
 
-
     @GetMapping("toOrderingCheck")
     public String toOrderingCheck(HttpSession session, Model model) {
 
         //Integer customerId = httpSession.getAttribute("loginBean");
-        Customer customer= (Customer) session.getAttribute("loginBean");
+        Customer customer = (Customer) session.getAttribute("loginBean");
 
-        List<OrderingWithDishes> orderingWithDishesList=new ArrayList<>();//用来传输数据到前端
+        List<OrderingWithDishes> orderingWithDishesList = new ArrayList<>();//用来传输数据到前端
         //OrderingWithDishes orderingWithDishesTemp=new OrderingWithDishes(); 不正确的写法，注释掉，应该写到for循环里面
 
 
-        List<Ordering> orderingList=orderingService.queryAllByCustomerId(customer.getId());
+        List<Ordering> orderingList = orderingService.queryAllByCustomerId(customer.getId());
 
 
-        for (Ordering item:orderingList
+        for (Ordering item : orderingList
         ) {
             //如果orderingWithDishesTemp对象放在foreach循环外面则不可,会导致orderingWithDishesList的所有值会引用同一个orderingWithDishesTemp上
-            OrderingWithDishes orderingWithDishesTemp=new OrderingWithDishes();//赋值给orderingWithDishesList的临时对象
+            OrderingWithDishes orderingWithDishesTemp = new OrderingWithDishes();//赋值给orderingWithDishesList的临时对象
             orderingWithDishesTemp.setId(item.getId());
             orderingWithDishesTemp.setAddress(item.getAddress());
             orderingWithDishesTemp.setDelivererId(item.getDelivererId());
@@ -165,17 +165,15 @@ public class OrderingController {
             orderingWithDishesTemp.setStoreName(storeService.queryById(item.getStoreId()).getName());
 
 
-
-
-            List<OrderingDishes> orderingDishesList= orderingDishesService.queryAllByOrderingId(item.getId());
+            List<OrderingDishes> orderingDishesList = orderingDishesService.queryAllByOrderingId(item.getId());
             //List<OrderingDishes> orderingDishesList= orderingDishesService.selectByOrderingId(item.getId());
-            List<OrderingDishesInfo> orderingDishesInfoList =new ArrayList<>();
+            List<OrderingDishesInfo> orderingDishesInfoList = new ArrayList<>();
 
 
             //将orderingDishesList的值赋到orderingDishesInfoList
-            for (OrderingDishes dishes:orderingDishesList
+            for (OrderingDishes dishes : orderingDishesList
             ) {
-                OrderingDishesInfo orderingDishesInfo=new OrderingDishesInfo();
+                OrderingDishesInfo orderingDishesInfo = new OrderingDishesInfo();
                 orderingDishesInfo.setId(dishes.getId());
                 orderingDishesInfo.setDishesCount(dishes.getDishesCount());
                 orderingDishesInfo.setDishesId(dishes.getDishesId());
@@ -194,20 +192,19 @@ public class OrderingController {
             orderingWithDishesList.add(orderingWithDishesTemp);
         }
 
-        model.addAttribute("orderingWithDishesList",orderingWithDishesList);
+        model.addAttribute("orderingWithDishesList", orderingWithDishesList);
 
         return "pages/ordering_check";
     }
 
     @GetMapping("deliveryConfirmine")
-    public String  deliveryConfirmine(int orderingId){
+    public String deliveryConfirmine(int orderingId) {
 
-        Date date =new Date();
-        Ordering ordering=orderingService.queryById(orderingId);
+        Date date = new Date();
+        Ordering ordering = orderingService.queryById(orderingId);
         ordering.setOrderingState(2);
         ordering.setEndTime(date);
         orderingService.update(ordering);
-
 
 
         return "redirect:/ordering/toOrderingCheck";
